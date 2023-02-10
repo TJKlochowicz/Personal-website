@@ -1,0 +1,79 @@
+body{
+    /* background-color:aliceblue; */
+    background-image: url('bgimage.jpg');
+    color: black;
+}
+
+/* .navbar{
+    font-size: 130%
+} */
+
+.row{
+    margin: 4%;
+    font-family: "Computer Modern Sans", sans-serif;
+}
+
+.title-row{
+    margin-top: 10%;
+}
+
+.description{
+    font-size: 110%;
+}
+
+.person-link{
+    all: unset;
+}
+
+.person-image{
+    rotate: 90;
+    width: 160px;
+    height:200px;
+
+}
+
+@media only screen and (min-width: 768px)  {
+.row{
+    margin: 5% 20% 2% 20%;
+
+}
+
+.title-row{
+    margin-top: 8%;
+}
+
+.latest-row {
+    margin-bottom: 0%;
+
+}
+.news-row {
+    margin-top: 3%;
+}
+.contat-row {
+    margin-top: 0%;
+}
+.contact-head-row{
+    margin-bottom: 0%;
+
+}
+}
+/* Publications styling */
+.publications-row{
+    margin-bottom: 0%;
+}
+#bibbase{
+    margin: 4%;
+    font-family: "Computer Modern Sans", sans-serif;
+} 
+
+
+.bibbase_group{
+    background-color: transparent;
+}
+
+@media only screen and (min-width: 768px)  {
+    #bibbase{
+        margin: 2% 20% 2% 20%;
+    
+    }
+}

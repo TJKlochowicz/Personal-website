@@ -1,0 +1,22 @@
+# Site settings
+url: "tklochowicz" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "Tomasz Klochowicz" # the name of your site, e.g. ACME Corp.
+description: >
+  
+credits: >
+  Credits go here
+future: true
+
+# Build settings
+sass:
+  sass_dir: css
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name
+
+exclude: 
+  - README.md
