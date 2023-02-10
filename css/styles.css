@@ -26,7 +26,7 @@ body{
 .face-photo{
     border-radius: 100%;
     border: 5px solid rgb(255, 255, 255);
-    height: 7%;
+    height: 20%;
     width: auto;
     margin-bottom: 5%;
 }
@@ -56,7 +56,7 @@ body{
     .face-photo{
         border-radius: 100%;
         border: 5px solid rgb(255, 255, 255);
-        height: 12%;
+        height: 50%;
         width: auto;
         margin-bottom: 3%;
     }
@@ -163,3 +163,7 @@ body{
     }
 
 /* Teaching */
+
+/* #teaching{
+    margin-top: -50%;
+} */
