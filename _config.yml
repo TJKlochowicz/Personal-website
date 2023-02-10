@@ -1,5 +1,5 @@
 # Site settings
-url: "tklochowicz" # the base hostname & protocol for your site, e.g. http://example.com
+url: "tklochowicz.com" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "Tomasz Klochowicz" # the name of your site, e.g. ACME Corp.
 description: >
