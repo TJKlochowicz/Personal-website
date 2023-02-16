@@ -52,12 +52,31 @@ layout: header
 <!-- Teaching -->
 <section id="teaching"> 
   <div class="row colored">
-    <div class="col-4"><h2>2022</h2></div>
-    <div class="col-8"><ul>
-      <li> TA Game Theory </li> 
-    </ul></div>
-      
+    <div class="col">
+      <h2> Teaching </h2>
+    </div>
   </div>
+  {%assign all_courses = site.data.courses | sort:"year" | reverse %}
+  {%for course in all_courses%}
+  {% capture current_course_year %}{{course.year}}{% endcapture %}
+    {%if course == all_courses[0]%}
+    <div class="row colored">
+      <div class="col-4 year-col"><h2>{{course.year | date:"%Y"}}</h2></div>
+      <div class="col-8 course-col">
+      <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
+      {% capture previous_course_year %}{{course.year}}{% endcapture %}
+    {%elsif current_course_year == previous_course_year %}
+    <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
+      {% capture previous_course_year %}{{course.year}}{% endcapture %}
+    {%elsif current_course_year != previous_course_year%}
+      </div></div>
+      <div class="row colored">
+        <div class="col-4 year-col"><h2>{{course.year | date:"%Y"}}</h2></div>
+        <div class="col-8 course-col">
+          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
+        {% capture previous_course_year %}{{course.year}}.{% endcapture %}
+    {%endif%}
+  {%endfor%}
   </section>
 
 <!-- Publications -->

@@ -164,6 +164,20 @@ body{
 
 /* Teaching */
 
-/* #teaching{
+#teaching{
     margin-top: -50%;
-} */
+}
+.year-col{
+    text-align: center;
+}
+
+.course-col{
+    text-align: left;
+    font-size: 120%;
+}
+
+@media only screen and (min-width: 768px)  {
+    #teaching{
+        margin-top: -10%;
+    }
+}
