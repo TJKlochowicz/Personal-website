@@ -26,8 +26,8 @@ body{
 .face-photo{
     border-radius: 100%;
     border: 5px solid rgb(255, 255, 255);
-    height: 20%;
-    width: auto;
+    height: auto;
+    width: 40%;
     margin-bottom: 5%;
 }
 #home a{
@@ -56,8 +56,8 @@ body{
     .face-photo{
         border-radius: 100%;
         border: 5px solid rgb(255, 255, 255);
-        height: 50%;
-        width: auto;
+        height: auto;
+        width: 40%;
         margin-bottom: 3%;
     }
 }
@@ -73,43 +73,43 @@ body{
     font-size: 100%;
 }
 .whiteboard#logic{
-    top: 20px;
+    top: 4%;
     rotate: -40deg;
-    left:120px;
+    left: 25%;
 }
 .whiteboard#forsem{
-    top: 160px;
-    right:20px;
+    top: 22%;
+    right:8%;
     rotate: 30deg;
 }
 .whiteboard#phil{
-    top: 130px;
+    top: 20%;
     rotate: -30deg;
-    left: 50px;
+    left: 15%;
 }
 .whiteboard#fc{
-    top: 90px;
-    right: 50px;
+    top: 11%;
+    right: 13%;
     rotate: -40deg;
 }
 .whiteboard#ling{
-    top: 180px;
+    top: 26%;
     rotate: 35deg;
-    left:100px;
+    left : 20%;
 }
 .whiteboard#ques{
-    top: 30px;
-    right:70px;
+    top: 3%;
+    right: 20%;
     rotate: 28deg;
 }
 .whiteboard#exp{
-    top: 70px;
+    top: 11%;
     rotate: 20deg;
-    left:35px;
+    left:10%;
 }
 .whiteboard#cemb{
-    top: 210px;
-    right:20px;
+    top: 26%;
+    right:12%;
     rotate: 40deg;
 }
 
@@ -120,10 +120,10 @@ body{
             font-size: 170%;
             color:aliceblue;
         }
-        .whiteboard#logic{
-            top: 60px;
+        /* .whiteboard#logic{
+            top: 5%;
             rotate: -40deg;
-            left:220px;
+            left: 25%;
         }
         .whiteboard#forsem{
             top: 230px;
@@ -159,7 +159,7 @@ body{
             top: 320px;
             right:70px;
             rotate: 40deg;
-        }
+        } */
     }
 
 /* Teaching */
