@@ -54,7 +54,7 @@ body{
 
 @media only screen and (min-width: 768px)  {
     #home{
-        margin: 1% 15% 2% 15%;
+        margin: 2% 15% 2% 15%;
     
     }
     .face-photo{
@@ -79,41 +79,41 @@ body{
 .whiteboard#logic{
     top: 4%;
     rotate: -40deg;
-    left: 23%;
+    left: 20%;
 }
 .whiteboard#forsem{
     top: 22%;
-    right:7%;
+    right:5%;
     rotate: 30deg;
 }
 .whiteboard#phil{
     top: 20%;
     rotate: -30deg;
-    left: 13%;
+    left: 11%;
 }
 .whiteboard#fc{
     top: 11%;
-    right: 11%;
+    right: 9%;
     rotate: -40deg;
 }
 .whiteboard#ling{
     top: 26%;
     rotate: 35deg;
-    left : 18%;
+    left : 16%;
 }
 .whiteboard#ques{
     top: 3%;
-    right: 18%;
+    right: 16%;
     rotate: 28deg;
 }
 .whiteboard#exp{
     top: 11%;
     rotate: 20deg;
-    left:7%;
+    left:5%;
 }
 .whiteboard#cemb{
     top: 26%;
-    right:10%;
+    right:8%;
     rotate: 40deg;
 }
 
