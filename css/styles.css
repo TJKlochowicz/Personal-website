@@ -26,8 +26,8 @@ body{
 .face-photo{
     border-radius: 100%;
     border: 5px solid rgb(255, 255, 255);
-    height: auto;
     width: 40%;
+    height: auto;
     margin-bottom: 5%;
 }
 #home a{
