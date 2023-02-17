@@ -75,41 +75,41 @@ body{
 .whiteboard#logic{
     top: 4%;
     rotate: -40deg;
-    left: 25%;
+    left: 23%;
 }
 .whiteboard#forsem{
     top: 22%;
-    right:8%;
+    right:7%;
     rotate: 30deg;
 }
 .whiteboard#phil{
     top: 20%;
     rotate: -30deg;
-    left: 15%;
+    left: 13%;
 }
 .whiteboard#fc{
     top: 11%;
-    right: 13%;
+    right: 11%;
     rotate: -40deg;
 }
 .whiteboard#ling{
     top: 26%;
     rotate: 35deg;
-    left : 20%;
+    left : 18%;
 }
 .whiteboard#ques{
     top: 3%;
-    right: 20%;
+    right: 18%;
     rotate: 28deg;
 }
 .whiteboard#exp{
     top: 11%;
     rotate: 20deg;
-    left:10%;
+    left:7%;
 }
 .whiteboard#cemb{
     top: 26%;
-    right:12%;
+    right:10%;
     rotate: 40deg;
 }
 
