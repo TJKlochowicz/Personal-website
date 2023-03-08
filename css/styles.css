@@ -58,8 +58,6 @@ body{
     
     }
     .face-photo{
-        border-radius: 100%;
-        border: 5px solid rgb(255, 255, 255);
         height: auto;
         width: 40%;
         margin-bottom: 3%;
@@ -83,7 +81,7 @@ body{
 }
 .whiteboard#forsem{
     top: 22%;
-    right:5%;
+    right:3.5%;
     rotate: 30deg;
 }
 .whiteboard#phil{
@@ -93,7 +91,7 @@ body{
 }
 .whiteboard#fc{
     top: 11%;
-    right: 9%;
+    right: 7%;
     rotate: -40deg;
 }
 .whiteboard#ling{
@@ -109,7 +107,7 @@ body{
 .whiteboard#exp{
     top: 11%;
     rotate: 20deg;
-    left:5%;
+    left:3%;
 }
 .whiteboard#cemb{
     top: 26%;
@@ -122,7 +120,6 @@ body{
     @media only screen and (min-width: 1300px)  {
         .whiteboard{
             font-size: 170%;
-            color:aliceblue;
         }
         /* .whiteboard#logic{
             top: 5%;
