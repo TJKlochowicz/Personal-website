@@ -1,10 +1,8 @@
-body{
-    background-color: aquamarine;
-}
-
 @media only screen and (min-width: 768px)  {
-    .white-space{
-        margin-left: 100px;
-        color: sandybrown;
+    .white-space-ann{
+        margin-left: 80px;
+    }
+    .white-space-bill{
+        margin-left: 80px;
     }
 }
