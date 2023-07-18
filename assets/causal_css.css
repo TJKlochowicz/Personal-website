@@ -6,7 +6,7 @@
     }
 }
 
-.picture-select :hover{
+.picture-select:hover{
     border: 100px solid #555;
     width: 300%;
 
