@@ -7,9 +7,25 @@
 }
 
 .picture-select:hover{
-    border: 100px solid #555;
+    border: 10px solid #555;
 
 }
-body{
-    background-color: red;
+
+#jspsych-survey-multi-select-response-0-0{
+    display: none;
+}
+#jspsych-survey-multi-select-response-0-1{
+    display: none;
+}
+#jspsych-survey-multi-select-response-0-2{
+    display: none;
+}
+#jspsych-survey-multi-select-response-0-3{
+    display: none;
+}
+#jspsych-survey-multi-select-response-0-4{
+    display: none;
+}
+#jspsych-survey-multi-select-response-0-5{
+    display: none;
 }
