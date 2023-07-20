@@ -8,7 +8,11 @@
         font-size: 120%;
     }
 }
-
+@media only screen and (max-width: 600px)  {
+    .mob-btn{
+        font-size: 20%;
+    }
+}
 .picture-select:hover{
     outline: 3px solid #555;
     border-radius: 25px;
