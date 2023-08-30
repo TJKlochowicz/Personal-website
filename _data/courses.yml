@@ -1,6 +1,23 @@
 - name: Game Theory
-  year: 2022-01-01
-  date: (April-May)
+  date: 2022-01-01
+  sem: (April-May)
   role: Teaching Assistant
-  program: Msc Logic
+  program: Master of Logic
+  main: Ulle Endriss
   url: https://staff.fnwi.uva.nl/u.endriss/teaching/game-theory/
+
+- name: Logic and Conversation
+  date: 2023-11-11
+  sem: (November-December)
+  role: Teaching Assistant
+  program: Master of Logic
+  main: Floris Roelofsen
+  url: https://projects.illc.uva.nl/inquisitivesemantics/
+
+- name: Philosophical Logic
+  date: 2023-11-12
+  sem: (November-December)
+  role: Teaching Assistant
+  program: Master of Logic
+  main: Sander Beckers
+  url: https://studiegids.uva.nl/xmlpages/page/2023-2024-en/search-course/course/109149

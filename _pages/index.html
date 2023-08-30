@@ -21,7 +21,7 @@ layout: header
             <p>Philosophy</p>
           </div>
           <div class="whiteboard" id="fc">
-            <p >free choice</p>
+            <p >Free Choice</p>
           </div>
           <div class="whiteboard" id="ling">
             <p >Linguistics</p>
@@ -33,13 +33,13 @@ layout: header
             <p>Experiments</p>
           </div>
           <div class="whiteboard" id="cemb">
-            <p>clause-embedding</p>
+            <p>Clause-embedding</p>
           </div>
       </div>
       <div class="title-text">
         <h1 class="title">Hi, I am Tomasz Klochowicz</h1>
         <h3 class="stitle">I am a PhD student at the Institute for Logic, Language and Computation <a href="https://www.illc.uva.nl/">(ILLC)</a> at the <a href="https://www.uva.nl/en">University of Amsterdam</a>. </h3> 
-        <h4 class="stitle">I work on the <a href="">NihiL</a> project under the supervision of <a href="https://www.marialoni.org/">Maria Aloni</a> and <a href="https://www.florisroelofsen.com/">Floris Roelofsen.</a></h4>
+        <h4 class="stitle">I work on the <a href="https://projects.illc.uva.nl/nihil/">NihiL</a> project under the supervision of <a href="https://www.marialoni.org/">Maria Aloni</a> and <a href="https://www.florisroelofsen.com/">Floris Roelofsen.</a></h4>
         <h3><a href="#news"><i class="fa-solid fa-chevron-down"></i></a></h3>
       </div> 
           
@@ -57,28 +57,41 @@ layout: header
 <section id="teaching"> 
   <div class="row colored">
     <div class="col">
-      <h2> Teaching </h2>
+      <h2 class="title"> Teaching </h2>
+      <hr>
     </div>
   </div>
-  {%assign all_courses = site.data.courses | sort:"year" | reverse %}
+  {%assign all_courses = site.data.courses | sort:"date" | reverse %}
   {%for course in all_courses%}
-  {% capture current_course_year %}{{course.year}}{% endcapture %}
+  {% capture current_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%if course == all_courses[0]%}
-    <div class="row colored">
-      <div class="col-4 year-col"><h2>{{course.year | date:"%Y"}}</h2></div>
-      <div class="col-8 course-col">
-      <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
-      {% capture previous_course_year %}{{course.year}}{% endcapture %}
+    <div class="row colored course-row">
+      <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
+      <div class="col-10 course-col">
+          {%if course.main%}
+          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  for the {{course.program}} (Main instructor: {{course.main}})</p>
+          {%else%}
+          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+          {%endif%}
+    {% capture previous_course_year %}{{course.date  | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year == previous_course_year %}
-    <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
-      {% capture previous_course_year %}{{course.year}}{% endcapture %}
+          {%if course.main%}
+          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} (Main instructor: {{course.main}})</p>
+          {%else%}
+          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+          {%endif%}
+    {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year != previous_course_year%}
       </div></div>
-      <div class="row colored">
-        <div class="col-4 year-col"><h2>{{course.year | date:"%Y"}}</h2></div>
-        <div class="col-8 course-col">
-          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  {{course.date}} for the {{course.program}}</p>
-        {% capture previous_course_year %}{{course.year}}.{% endcapture %}
+      <div class="row colored course-row">
+        <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
+        <div class="col-10 course-col">
+            {%if course.main%}
+            <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} (Main instructor: {{course.main}})</p>
+            {%else%}
+            <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+            {%endif%}
+        {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%endif%}
   {%endfor%}
   </section>

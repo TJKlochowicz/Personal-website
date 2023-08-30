@@ -1,8 +1,13 @@
 /* Navbar */
 body{
     background-image:url('bgblack.jpg');
+
 }
 
+hr{
+    border: 1px solid white;
+    margin: 3% 10%;
+}
 
 .navbar{
     font-family: "Computer Modern Sans", sans-serif;
@@ -38,6 +43,7 @@ body{
 #home a:hover{
     all: unset;
     text-decoration: underline;
+    cursor: pointer;
 }
 .title{
     font-weight: 700;
@@ -147,7 +153,16 @@ body{
 
 /* Teaching */
 
+#teaching a{
+    all: unset;
+    text-decoration: underline;
+}
 
+#teaching a:hover{
+    all: unset;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .year-col{
     text-align: center;
 }
@@ -156,9 +171,12 @@ body{
     text-align: left;
     font-size: 120%;
 }
+.course-row{
+    padding-top: 1%;
+}
 
 @media only screen and (min-width: 768px)  {
     #teaching{
-        margin-top: -10%;
+        margin-top: -5%;
     }
 }
