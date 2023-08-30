@@ -64,7 +64,7 @@ body{
 
 @media only screen and (min-width: 768px)  {
     #home{
-        margin: 2% 15% 2% 15%;
+        margin: 3% 15% 2% 15%;
     
     }
     .face-photo{
@@ -222,4 +222,10 @@ body{
     #teaching{
         margin-top: -8%;
     }
+}
+
+
+/* Publications */
+#pubications{
+    background-image:url('bgblack.jpg');
 }
