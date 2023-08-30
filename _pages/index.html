@@ -96,7 +96,7 @@ layout: header
   {% capture current_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%if course == all_courses[0]%}
     <div class="row colored course-row">
-      <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
+      <div class="col-2 year-col"><h2 class="year-tag">{{course.date | date:"%Y"}}</h2></div>
       <div class="col-10 course-col">
           {%if course.main%}
           <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a> in the {{course.program}} (Main instructor: {{course.main}})</p>
@@ -114,7 +114,7 @@ layout: header
     {%elsif current_course_year != previous_course_year%}
       </div></div>
       <div class="row colored course-row">
-        <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
+        <div class="col-2 year-col"><h2 class="year-tag">{{course.date | date:"%Y"}}</h2></div>
         <div class="col-10 course-col">
             {%if course.main%}
             <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} (Main instructor: {{course.main}})</p>
