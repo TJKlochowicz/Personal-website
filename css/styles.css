@@ -85,44 +85,44 @@ body{
     font-size: 100%;
 }
 .whiteboard#logic{
-    top: 6%;
+    top: 3%;
     rotate: -40deg;
     left: 20%;
 }
 .whiteboard#exp{
-    top: 17%;
+    top: 11%;
     rotate: 20deg;
-    left:7%;
+    left:6%;
 }
 .whiteboard#phil{
-    top: 30%;
+    top: 20%;
     rotate: -30deg;
     left: 11%;
 }
 .whiteboard#ling{
-    top: 35%;
+    top: 25%;
     rotate: 35deg;
     left : 16%;
 }
 
 .whiteboard#ques{
-    top: 5%;
+    top: 3%;
     right: 16%;
     rotate: 28deg;
 }
 .whiteboard#fc{
-    top: 17%;
+    top: 11%;
     right: 8%;
     rotate: -40deg;
 }
 .whiteboard#forsem{
-    top: 33%;
-    right:5%;
+    top: 20%;
+    right:3%;
     rotate: 30deg;
 }
 .whiteboard#cemb{
-    top: 36%;
-    right:9%;
+    top: 26%;
+    right:5%;
     rotate: 40deg;
 }
 
@@ -138,10 +138,30 @@ body{
         .whiteboard{
             font-size: 170%;
         }
+        .whiteboard#exp{
+            top: 13%;
+            rotate: 20deg;
+            left:6%;
+        }
+        .whiteboard#phil{
+            top: 30%;
+            rotate: -30deg;
+            left: 11%;
+        }
         .whiteboard#ling{
             top: 46%;
             rotate: 35deg;
             left : 16%;
+        }
+        .whiteboard#fc{
+            top: 20%;
+            right: 8%;
+            rotate: -40deg;
+        }
+        .whiteboard#forsem{
+            top: 37%;
+            right:5%;
+            rotate: 30deg;
         }
         .whiteboard#cemb{
             top: 47%;
