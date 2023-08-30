@@ -4,7 +4,7 @@ body{
 
 }
 
-hr{
+.title-hr{
     border: 1px solid white;
     margin: 3% 10%;
 }
@@ -151,7 +151,49 @@ hr{
         
     }
 
+
+/* Talks */
+#talks{
+    background-image:url('bgblack.jpg');
+}
+
+.talk-col{
+    text-align: left;
+    font-size: 120%;
+    color: white;
+    margin-left: 10%;
+}
+
+.talk-hr{
+    border: 0.7px solid rgba(255, 255, 255, 0.678);
+    margin: 3% 20% 3% 0%;
+}
+
+.talk-row{
+    padding-top: 0%;
+    margin-bottom: 8%;
+}
+
+.more-btn{
+    color: white;
+    /* outline: solid  white; */
+    margin-top: 1%;
+}
+
+.talks{
+    font-size: 110%;
+}
+
+@media only screen and (min-width: 768px)  {
+    #talks{
+        margin-top: -5%;
+    }
+}
+
 /* Teaching */
+#teaching{
+    background-image:url('bgblack.jpg');
+}
 
 #teaching a{
     all: unset;
@@ -170,6 +212,7 @@ hr{
 .course-col{
     text-align: left;
     font-size: 120%;
+    color: white;
 }
 .course-row{
     padding-top: 1%;
@@ -177,6 +220,6 @@ hr{
 
 @media only screen and (min-width: 768px)  {
     #teaching{
-        margin-top: -5%;
+        margin-top: -8%;
     }
 }

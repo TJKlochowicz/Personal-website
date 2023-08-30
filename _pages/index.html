@@ -21,7 +21,7 @@ layout: header
             <p>Philosophy</p>
           </div>
           <div class="whiteboard" id="fc">
-            <p >Free Choice</p>
+            <p>Free Choice</p>
           </div>
           <div class="whiteboard" id="ling">
             <p >Linguistics</p>
@@ -40,25 +40,55 @@ layout: header
         <h1 class="title">Hi, I am Tomasz Klochowicz</h1>
         <h3 class="stitle">I am a PhD student at the Institute for Logic, Language and Computation <a href="https://www.illc.uva.nl/">(ILLC)</a> at the <a href="https://www.uva.nl/en">University of Amsterdam</a>. </h3> 
         <h4 class="stitle">I work on the <a href="https://projects.illc.uva.nl/nihil/">NihiL</a> project under the supervision of <a href="https://www.marialoni.org/">Maria Aloni</a> and <a href="https://www.florisroelofsen.com/">Floris Roelofsen.</a></h4>
-        <h3><a href="#news"><i class="fa-solid fa-chevron-down"></i></a></h3>
+        <h3><a href="#talks"><i class="fa-solid fa-chevron-down"></i></a></h3>
       </div> 
           
     </div>
   </div>
 </section>
  
-<!-- News & Events -->
-<section id="news"> 
-  <div class="row">
-      
+<!-- Talks -->
+<section id="talks"> 
+  <div class="row colored">
+    <div class="col">
+      <h2 class="title"> Talks </h2>
+      <hr class="title-hr">
+    </div> 
   </div>
-  </section>
+  {%assign all_talks = site.data.talks | sort:"date" | reverse %}
+  {%assign len = all_Talks.size%}
+
+  <div class="row colored talk-row">
+    <div class="col talk-col">
+  {%for talk in all_talks%}
+    <p class="talks"><a class="more-btn" type="button" data-toggle="collapse" data-target=#{{talk.venue}} aria-pressed = "false" aria-expanded="false" aria-controls={{talk.venue}}> 
+      <b>{{talk.venue}}</b>
+    {{talk.date | date: "%-d %B %Y"}}
+     <i>{{talk.title}}</i> 
+    <i class="fa-solid fa-chevron-right arrow"></i>  </a></p>
+   
+    <div class="collapse" id={{talk.venue}}>
+      {%if talk.slides%}
+      <p> <a href={{talk.slides}}>Slides</a></p>
+      {%endif%}
+      <p>{{talk.description | markdownify}}</p>
+    </div>
+    {%if talk.date != all_talks[-1].date%}
+    <!-- <hr class="talk-hr"> -->
+    {%endif%}
+  {%endfor%}
+  
+  </div>
+  </div>
+
+
+
 <!-- Teaching -->
 <section id="teaching"> 
   <div class="row colored">
     <div class="col">
       <h2 class="title"> Teaching </h2>
-      <hr>
+      <hr class="title-hr">
     </div>
   </div>
   {%assign all_courses = site.data.courses | sort:"date" | reverse %}
@@ -69,16 +99,16 @@ layout: header
       <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
       <div class="col-10 course-col">
           {%if course.main%}
-          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  for the {{course.program}} (Main instructor: {{course.main}})</p>
+          <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a> in the {{course.program}} (Main instructor: {{course.main}})</p>
           {%else%}
-          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+          <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
           {%endif%}
     {% capture previous_course_year %}{{course.date  | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year == previous_course_year %}
           {%if course.main%}
-          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} (Main instructor: {{course.main}})</p>
+          <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} (Main instructor: {{course.main}})</p>
           {%else%}
-          <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+          <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
           {%endif%}
     {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year != previous_course_year%}
@@ -87,9 +117,9 @@ layout: header
         <div class="col-2 year-col"><h2>{{course.date | date:"%Y"}}</h2></div>
         <div class="col-10 course-col">
             {%if course.main%}
-            <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} (Main instructor: {{course.main}})</p>
+            <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} (Main instructor: {{course.main}})</p>
             {%else%}
-            <p style="color: white"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>   for the {{course.program}} </p>
+            <p> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
             {%endif%}
         {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%endif%}
@@ -118,9 +148,5 @@ layout: header
       
   </div>
 
-    <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>
