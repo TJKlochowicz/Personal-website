@@ -28,10 +28,11 @@ body{
     border: 5px solid rgb(255, 255, 255);
     width: 50%;
     height: auto;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
 }
 #home a{
     all: unset;
+    text-decoration: underline;
 }
 
 #home a:hover{
@@ -48,7 +49,10 @@ body{
 }
 
 .img-div{
-    margin-bottom: 20%;
+    margin-bottom: 1%;
+}
+.title-text{
+    margin-top: 20%;
 }
 
 
@@ -75,92 +79,70 @@ body{
     font-size: 100%;
 }
 .whiteboard#logic{
-    top: 4%;
+    top: 6%;
     rotate: -40deg;
     left: 20%;
 }
-.whiteboard#forsem{
-    top: 22%;
-    right:3.5%;
-    rotate: 30deg;
+.whiteboard#exp{
+    top: 17%;
+    rotate: 20deg;
+    left:7%;
 }
 .whiteboard#phil{
-    top: 20%;
+    top: 30%;
     rotate: -30deg;
     left: 11%;
 }
-.whiteboard#fc{
-    top: 11%;
-    right: 7%;
-    rotate: -40deg;
-}
 .whiteboard#ling{
-    top: 26%;
+    top: 35%;
     rotate: 35deg;
     left : 16%;
 }
+
 .whiteboard#ques{
-    top: 3%;
+    top: 5%;
     right: 16%;
     rotate: 28deg;
 }
-.whiteboard#exp{
-    top: 11%;
-    rotate: 20deg;
-    left:3%;
+.whiteboard#fc{
+    top: 17%;
+    right: 8%;
+    rotate: -40deg;
+}
+.whiteboard#forsem{
+    top: 33%;
+    right:5%;
+    rotate: 30deg;
 }
 .whiteboard#cemb{
-    top: 26%;
-    right:8%;
+    top: 36%;
+    right:9%;
     rotate: 40deg;
 }
 
+@media only screen and (min-width: 1000px)  {
+    .title-text{
+        margin-top: 5%;
+    }}
 
-
-    @media only screen and (min-width: 1300px)  {
+    @media only screen and (min-width: 1200px)  {
+        .title-text{
+            margin-top: 2%;
+        }
         .whiteboard{
             font-size: 170%;
         }
-        /* .whiteboard#logic{
-            top: 5%;
-            rotate: -40deg;
-            left: 25%;
-        }
-        .whiteboard#forsem{
-            top: 230px;
-            right:80px;
-            rotate: 30deg;
-        }
-        .whiteboard#phil{
-            top: 300px;
-            rotate: -20deg;
-            left: 120px;
-        }
-        .whiteboard#fc{
-            top: 100px;
-            right:100px;
-            rotate: -40deg;
-        }
         .whiteboard#ling{
-            top: 190px;
+            top: 46%;
             rotate: 35deg;
-            left:120px;
-        }
-        .whiteboard#ques{
-            top: 40px;
-            right:170px;
-            rotate: 28deg;
-        }
-        .whiteboard#exp{
-            top: 120px;
-            rotate: 13deg;
-            left:110px;
+            left : 16%;
         }
         .whiteboard#cemb{
-            top: 320px;
-            right:70px;
+            top: 47%;
+            right:9%;
             rotate: 40deg;
-        } */
+        }
+        
     }
 
 /* Teaching */
