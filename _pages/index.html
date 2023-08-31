@@ -124,31 +124,44 @@ layout: header
         {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%endif%}
   {%endfor%}
+    </div></div>
   </section>
 
 <!-- Publications -->
 
-<section id="publications"> 
+<section id="pubications"> 
   <div class="row colored">
-
-    <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/TJKlochowicz/Personal-website/master/assets/papers.bib&jsonp=1&hidemenu=true&theme=default&commas=true="></script>
-      
+    <div class="col">
+      <h2 class="title"> Publications </h2>
+      <hr class="title-hr">
+    </div>
   </div>
+
+
+  <div class="row colored course-row">
+    <div class="col course-col">
+      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/TJKlochowicz/Personal-website/master/assets/papers.bib&jsonp=1&hidemenu=true&theme=default&commas=true="></script>
+    </div>
+  </div>
+
   </section>
 
 <!--  Projects -->
 
 <section id="projects"> 
-  <div class="row">
-      
+  <div class="row colored">
+    <div class="col">
+      <h2 class="title"> Projects </h2>
+      <hr class="title-hr">
+    </div>
   </div>
-  </section>
+
 
 <!-- Contact -->
-<section id="contact"> 
+<!-- <section id="contact"> 
   <div class="row">
       
-  </div>
+  </div> -->
 
   </body>
 </html>

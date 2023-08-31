@@ -1,6 +1,7 @@
 /* Navbar */
 body{
     background-image:url('bgblack.jpg');
+    background-repeat: no-repeat;
 
 }
 
@@ -245,12 +246,18 @@ body{
         margin-top: -8%;
     }
     .year-tag{
-        font-size: 100%;
+        font-size: 250%;
     }
 }
 
 
 /* Publications */
 #pubications{
+    background-image:url('bgblack.jpg');
+}
+
+
+/* Projects */
+#projects{
     background-image:url('bgblack.jpg');
 }
