@@ -93,7 +93,7 @@ body{
 .whiteboard#exp{
     top: 11%;
     rotate: 20deg;
-    left:6%;
+    left:4%;
 }
 .whiteboard#phil{
     top: 20%;
@@ -113,12 +113,12 @@ body{
 }
 .whiteboard#fc{
     top: 11%;
-    right: 8%;
+    right: 6%;
     rotate: -40deg;
 }
 .whiteboard#forsem{
     top: 20%;
-    right:3%;
+    right:2%;
     rotate: 30deg;
 }
 .whiteboard#cemb{
