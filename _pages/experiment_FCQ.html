@@ -1,0 +1,3251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add JsPsych -->
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <!-- Keybord response plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <!-- Image Keybord response plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.2"></script>
+    <!-- Preload plugin to preload images -->
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+    <!-- Button Response Plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.2"></script>
+     <!-- Image button response plugin -->
+     <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.2"></script>
+    
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
+
+
+
+    <!-- Style from JsPsych -->
+    <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!-- JsPsych script -->
+    <script>
+ // Note that participant's response 0 corresponds to Yes and 1 corresponds to No. 
+        // Bootstrap
+        document.querySelector('head').insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">')
+        document.querySelector('head').insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https://www.tklochowicz.com/assets/experiment_css.css" type="text/css">')
+        // Initialise and make data display at the end.
+        var jsPsych = initJsPsych({
+            on_finish: function(){
+                // window.location = ""
+                jsPsych.data.displayData();
+            }
+            });
+
+        // The timeline is an array that contains the set of trials we want to run in the experiment.
+        var timeline = [];
+        var preload = {
+            type: jsPsychPreload,
+            images: ['info.png','houses.png','contexts/Ben-Eye_neither.png',  'contexts/Ben-Eye_one.png',  'contexts/Ben-Eye_both.png',  'contexts/Palace-Abbey_neither.png',  'contexts/Palace-Abbey_one.png',  'contexts/Palace-Abbey_both.png',  'contexts/Gallery-Museum_neither.png',  'contexts/Gallery-Museum_one.png',  'contexts/Gallery-Museum_both.png',  'contexts/Bridge-Dungeon_neither.png',  'contexts/Bridge-Dungeon_one.png',  'contexts/Bridge-Dungeon_both.png',  'contexts/dog-cat_neither.png',  'contexts/dog-cat_one.png',  'contexts/dog-cat_both.png',  'contexts/lizard-parrot_neither.png',  'contexts/lizard-parrot_one.png',  'contexts/lizard-parrot_both.png',  'contexts/mouse-hamster_neither.png',  'contexts/mouse-hamster_one.png',  'contexts/mouse-hamster_both.png',  'contexts/snake-spider_neither.png',  'contexts/snake-spider_one.png',  'contexts/snake-spider_both.png'] };
+            timeline.push(preload);
+        var welcome = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: ' <p style="margin-top:2%;"><b>Welcome!</b></p><p style="font-size:100%;margin-left:10%;margin-right:10%;">My name is Tomasz Klochowicz, and I am PhD student at the University of Amsterdam. At the beginning, I would like to thank you for your participation in this study. It should take you no more than 15 minutes to answer all the questions. </p> <p style="font-size:100%;margin-left:10%;margin-right:10%;">The questions do not have "right" or "wrong" answers. Some of the questions may seem similar, but please answer all of them. The survey does not aim to test your general knowledge. Some of the questions may refer to real people or events, but the stories in the questions are completely made up for the sole purpose of this survey. If a story seems false or implausible to you, try to imagine the situation described by the story. If you have any questions, you can contact me by e-mail at: t.j.klochowicz@uva.nl.</p>',
+            choices: ['OK'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            };
+        // Push the welcome trial to the timeline
+        timeline.push(welcome);
+
+        var consent = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: ` 
+                <div class='row'> 
+                    <div class = 'col consent'>
+                        <h2 style='text-align:center;margin-bottom:2%'>Informed Consent</h2>
+                        <hr>
+                        <p><b> This is a demo version! We will not be collecting your data. The contents of the agreement are for inspection only.</b></p>
+
+                        <p>By clicking the button 'Accept and continue' below you declare that:</p>
+
+                        <p>You have been clearly informed about the research: NihiL - the neglect-zero effect in modal and nominal domains, research project conducted by Tomasz Klochowicz – PhD student under supervision of Maria Aloni and Floris Roelofsen at the University of Amsterdam, Institute for Logic Language and Computation, as described in the information brochure displayed at prolific.co. You declare that your questions have been answered to your satisfaction.</p>
+
+                        <p>You realise that participation in this research is on an entirely voluntary basis. You retain the right to revoke this consent without having to provide any reasons for my decision. You are aware that you are entitled to discontinue the research at any time, and that you can always withdraw your consent after the research has ended. If you decide to stop or withdraw your consent, all the information gathered up until then will be permanently deleted.</p>
+
+                        <p>If your data are used in scientific publications or made public in any other way, they will be fully anonymised. Your personal information may not be viewed by third parties.</p>
+
+                        <p>If you need any further information on the research, now or in the future, you can contact Maria Aloni (m.d.aloni@uva.nl) or Tomasz Klochowicz (email: t.j.klochowicz@uva.nl; Universiteit van Amsterdam p.o. box 94242 1090 GE Amsterdam)</p>
+                        <p>If you have any complaints regarding this research, you can contact the secretary of the Ethics Committee of the Faculty of Humanities of the University of Amsterdam; email: commissie-ethiek-fgw@uva.nl; phone number: +31 20 525 3054; Binnengasthuisstraat 9, 1012 ZA Amsterdam.</p>
+                        <p>By clicking the button 'Accept and continue' below you consent to:</p>
+                        <ul>
+                            <li>Participate in this research </li>
+                            <li>Storage and processing of the anonymized data. </li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            choices: ['Decline and exit', '<b> Accept and continue</b>'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            on_finish: function(data){
+            // Cheeck if consent the response as correct or incorrect.
+            if(data.response == 1){
+            data.correct = true;
+            } else {
+            data.correct = false; 
+            }
+        }
+            };
+            var if_consent_trial = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "<b>We cannot collect data from you without your consent. </b> </p> <p><a href='https://www.tklochowicz.com'>Click here to return to main page.</a></p>",
+        on_finish: function(){
+            window.location = 'https://www.tklochowicz.com'
+        },
+    trial_duration: 5000,
+    post_trial_gap: 1000,
+    };
+
+    var if_consent_node = {
+        timeline: [if_consent_trial],
+        conditional_function: function(){
+            var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+            if(last_trial_correct){
+                return false;
+            } else {
+                return true;
+            }
+        }
+    };
+        // Push the welcome trial to the timeline
+        // timeline.push(consent, if_consent_node);
+    
+    // Loop until the consent is given. To avoid 'go back' bug: previously it was possible to go back after being redirected and skip that question.
+    var loop_node = {
+    timeline: [consent, if_consent_node],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    };
+
+timeline.push(loop_node);
+
+    // var native = {
+    //     type: jsPsychSurveyMultiChoice,
+    //     questions: [
+    //         {
+    //         prompt: "Are you a native speaker of English?", 
+    //         options: ['I am a native speaker of English.', 'I am not a native speaker of English.'],
+    //         required: true
+    //         }   
+    //     ],
+    //     on_finish: function(data){
+    //     // Score the response as correct or incorrect.
+    //     if(data.response.Q0 == 'I am a native speaker of English.'){
+    //     data.correct = true;
+    //     } else {
+    //     data.correct = false; 
+    //     }
+    // },
+    // // Create a conditional trial, which displays error message when the question about the first languege is answered incorrectly and redirects back to prolific.
+    // };
+//     var if_trial = {
+//         type: jsPsychHtmlKeyboardResponse,
+//         stimulus: "<b>Only native speakers of English can participate in this study! </b> </p> <p><a href=''>Click here to return to Prolific.</a></p>",
+//         on_finish: function(){
+//             window.location = ''
+//         },
+//     trial_duration: 5000,
+//     post_trial_gap: 1000,
+// };
+
+// var if_node = {
+//     timeline: [if_trial],
+//     conditional_function: function(){
+//         var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+//         if(last_trial_correct){
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     }
+// };
+// // Push the question about the native language and redirect if wrong answer
+// var loop_node = {
+//     timeline: [native, if_node],
+//     loop_function: function(data){
+//         // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+//         if(data.values()[0].correct){
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     }
+//     };
+
+// timeline.push(loop_node);
+// Add instructions and a delay after they appear
+    var instructions = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: `
+                <div class ="row" style="margin-top:0px;">
+                <div class="col"> 
+                 <p style='font-size:110%;'>In this experiment you will see a number of short dialogues.</p>
+                 <p style='font-size:110%;'> For each dialogue you will see a picture which represents what is allowed or not allowed in that context. </p>
+                </div></div>
+                <div class="row" style="margin:5%">
+                    <div class="col-sm-6">
+                        <img src='contexts/dog-cat_one.png' style="width:60%;margin-bottom:4%;"></img>
+                        <p class='small'>It is <strong>allowed</strong> to keep a dog, but it is <strong>not allowed</strong> to keep a cat.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src='contexts/dog-cat_neither.png' style="width:60%;margin-bottom:4%;"></img>
+                        <p class='small'>It is <strong>not allowed</strong> to keep a dog, and it is <strong>not allowed</strong> to keep a cat.</p>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col"> 
+                 <p style='font-size:110%;'> If a symbol is in a <strong><span style="color:red;">red</span></strong> crossed out circle, then the action which it represents is <strong><span style="color:red;">not allowed.</span></strong> </p>
+                 <p style='font-size:110%;'> If it is in a <strong><span style="color:green;">green</span></strong>  (not crossed out) circle, then the action is <strong><span style="color:green;">allowed</span></strong>. </p>
+                </div> </div>
+
+            `,
+            choices: ['OK'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400
+            };
+
+        // Push the instructions trial to the timeline
+        timeline.push(instructions);
+   
+        // Add instructions and a second of delay after they appear
+        var instructions_2 = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: ` 
+                    <div class='row'>
+                        <div class='col'>
+                             <p style='font-size:110%;'>Example:</p>
+                            <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                        </div>
+                    </div>
+                    <div class='row' style='margin-bottom:4%;'>
+                        <div class='col' style='text-align:left'>
+                            <p style='margin-bottom:15px;font-size:110%;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract. She asks the landlady:</i></p>
+                            <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Am I allowed to keep <strong>a dog</strong> in this apartment?</span>  <br>
+                            <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+                        </div> 
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                            <img src='contexts/dog-cat_one.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+                        </div>
+                    </div>
+                <div class='row style='margin-bottom:4%;'>
+                    <div class='col'>
+                         <p style='font-size:110%;'> In this case Ann <b>is allowed to keep a dog.</b></p>
+                         <p style='font-size:110%;'>In each screen you will be asked to <b>evaluate whether the answer to a question was accurate given the picture.</b></p>
+                         <p style='font-size:110%;'>In this case, the answer to the question <b>is accurate given the picture.</b></p>
+                    </div>
+                </div>
+
+                    `,
+            choices: ['OK'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400,
+            
+            };
+
+        // Push the instructions trial to the timeline
+        timeline.push(instructions_2);
+
+// We need separate variable for each training to provide feedback!
+var feedback = {
+  type: jsPsychHtmlKeyboardResponse,
+  trial_duration: 
+  function(){
+    // Check if the answer was correct
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    if(last_trial_correct){
+      return 500; // the parameter value has to be returned from the function
+    } else {
+      return 4000; // the parameter value has to be returned from the function
+    }
+ },
+  stimulus: function(){
+    // Check if the answer was correct
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    if(last_trial_correct){
+      return "<p style='font-size:200%;'><b>Correct!</b></p>"; // the parameter value has to be returned from the function
+    } else {
+      return "<p style='font-size:200%;'> <b> Incorrect! </b></p> <p style='font-size:200%;'> Wait 4 seconds and try again!</p>"; // the parameter value has to be returned from the function
+    }
+  },
+  choices: ['NO_KEYS'],
+}
+
+// Context: one allowed answer: yes
+
+var training_one_allowed = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract. She asks the landlady:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Am I allowed to keep <strong>a dog</strong> in this apartment? </span>  <br>
+        <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/dog-cat_one.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  data: {
+    type: 0,
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedbac until the correct answer is given.
+var loop_node = {
+    timeline: [training_one_allowed, feedback],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node);
+
+
+var training_neither_allowed = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract. She asks the landlady:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Am I allowed to keep <strong>a dog</strong> in this apartment?</span>  <br>
+        <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/dog-cat_neither.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  data: {
+    type: '1',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedback until the correct answer is given.
+var loop_node2 = {
+    timeline: [training_neither_allowed, feedback],
+    loop_function: function(data){
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node2);
+
+// Train for no answer
+var training_no_answer = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract. She asks the landlady:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span> <span class='white-space-ann'> Am I allowed to keep <strong>a dog</strong> in this apartment? </span> <br>
+        <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/dog-cat_one.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  data: {
+    type: '1',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedbac until the correct answer is given.
+var loop_node = {
+    timeline: [training_no_answer, feedback],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node);
+
+
+// Train for the other scenario
+
+var training_one_allowed = {
+  type: jsPsychHtmlButtonResponse,
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Bill: </span><span class='white-space-bill'>Am I allowed to go to <strong>the London Eye</strong> with this pass? </span><br>
+        <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/Ben-Eye_one.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+  data: {
+    type: '1',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedback until the correct answer is given.
+var loop_node = {
+    timeline: [training_one_allowed, feedback],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node);
+
+// The same configuration for the other scenario
+var training_neither_allowed = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Bill: </span><span class='white-space-bill'>Am I allowed to go to <strong>the London Eye</strong> with this pass?</span><br>
+        <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/Ben-Eye_one.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+  data: {
+    type: '0',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedback until the correct answer is given.
+var loop_node2 = {
+    timeline: [training_neither_allowed, feedback],
+    loop_function: function(data){
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node2);
+
+// Train for no answer
+var training_no_answer = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Bill: </span><span class='white-space-bill'>Am I allowed to go to <strong> to the Big Ben</strong> with this pass? </span><br>
+        <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/Ben-Eye_both.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  data: {
+    type: '0',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedbac until the correct answer is given.
+var loop_node = {
+    timeline: [training_no_answer, feedback],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node);
+
+// Train for no answer
+var training_no_answer = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: ` 
+
+<div class='row'>
+    <div class='col'>
+        <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:4%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;font-size:110%;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+        <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Bill: </span><span class='white-space-bill'>Am I allowed to go to <strong> Buckingham Palace </strong> with this pass? </span><br>
+        <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+    </div> 
+</div>
+<div class='row'>
+    <div class='col'>
+        <img src='contexts/Palace-Abbey_both.png' style='width:90%;max-width:400px;height:auto;margin-bottom:4%;'></img>
+    </div>
+</div>
+<div>
+</div>
+<div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+</div>
+
+`,
+  choices: ['Accurate','Inaccurate'],
+  button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+  data: {
+    type: '1',
+  },
+  on_finish: function(data){
+    // Score the response as correct or incorrect.
+    if(data.response == data.type){
+      data.correct = true;
+    } else {
+      data.correct = false; 
+    }
+  }
+};
+
+// Loop the training and feedbac until the correct answer is given.
+var loop_node = {
+    timeline: [training_no_answer, feedback],
+    loop_function: function(data){
+        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        if(data.values()[0].correct){
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+timeline.push(loop_node);
+
+// Add instructions and a delay after they appear
+var instructions = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+         <p style='font-size:110%;'>This is the end of the training part of the experiment.</p>
+         <p style='font-size:110%;'><b>From now on you will not receive any feedback on your answers.</b></p>
+
+    `,
+    choices: ['OK'],
+    button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+    post_trial_gap: 400
+    };
+
+// Push the instructions trial to the timeline
+timeline.push(instructions);
+
+// Define fixation cross
+var fixation = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: '<div style="font-size:80px;">+</div>',
+    choices: "NO_KEYS",
+    // Add random fixation cross duration
+    trial_duration: function(){
+        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500], 1)[0];
+        },
+    data: {
+        task: 'fixation'
+    }
+    };
+
+
+// In the test procedure we want the ratio of tests to fillers 2:1, so we define two arrays of test ids and one of fillers. They will take 48 test stimuli and 24 fillers.
+
+// Define the 'even' ids of test trials  
+const tests_numbers_1 = [];
+for (let i = 0; i < 48; i = i+2) {
+    tests_numbers_1.push(i);
+    }
+// Define the 'odd' ids of test trials  
+const tests_numbers_2 = [];
+for (let i = 1; i < 48; i = i+2) {
+    tests_numbers_2.push(i);
+    }
+
+// Define the ids of filler trials  
+const filler_numbers = [];
+for (let i = 48; i < 72; i++) {
+    filler_numbers.push(i);
+    }
+
+var test_stimuli = [
+{ stimulus:` 
+ 
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace or Westminster Abbey</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'Buckingham Palace, Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery or the British Museum</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'the National Gallery, the British Museum', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge or the London Dungeon</strong> with this pass?</span><br>
+             <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'Tower Bridge, the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard or a parrot</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a lizard, a parrot', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse or a hamster</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a mouse, a hamster', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'target', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;font-size:110%;'>
+     <div class = 'col' style='text-align:left'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake or a spider</strong> in this apartment?</span><br>
+             <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a snake, a spider', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+ 
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'Big Ben', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the London Eye</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'the London Eye', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Big Ben</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Ben-Eye_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'Big Ben', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Westminster Abbey</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Buckingham Palace</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'Buckingham Palace', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Westminster Abbey</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Palace-Abbey_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'Westminster Abbey', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'the National Gallery', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the British Museum</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'the British Museum', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the National Gallery</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Gallery-Museum_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'the National Gallery', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the London Dungeon</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>Tower Bridge</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'Tower Bridge', 
+scenario: 'tourist office', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Bill is in London at a tourist office. He wants to know more about the tourist pass they offer. He asks the employee of the office:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Bill: </span><span class= white-space-bill>Am I allowed to go to <strong>the London Dungeon</strong> with this pass?</span> <br>
+         <span style='font-variant:small-caps;'>Employee: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/Bridge-Dungeon_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the employee's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'the London Dungeon', 
+scenario: 'tourist office', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a dog', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a cat</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a cat', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/dog-cat_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a dog', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a parrot</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a parrot', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a lizard</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a lizard', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a parrot</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/lizard-parrot_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a parrot', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'Yes', 
+items: 'a mouse', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a hamster</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'No', 
+items: 'a hamster', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a mouse</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/mouse-hamster_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'Yes', 
+items: 'a mouse', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a spider</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_both.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'both', 
+response_type: 'No', 
+items: 'a spider', 
+scenario: 'landlady', 
+condition: 'false', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a snake</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>Yes</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_one.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'one', 
+response_type: 'Yes', 
+items: 'a snake', 
+scenario: 'landlady', 
+condition: 'true', 
+
+}, 
+{ stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='img/houses.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+     </div>
+ </div>
+ <div class='row' style='margin-bottom:4%;'>
+     <div class = 'col' style='text-align:left;font-size:110%;'>
+         <p style='margin-bottom:15px;'><i>Ann is about to rent a new apartment. She wants to discuss the terms with her new landlady before drafting a contract.  She asks the landlady:</i></p>
+         <div style='margin-left:40px'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a spider</strong> in this apartment?</span> <br>
+         <span style='font-variant:small-caps;'>Landlady: </span><strong>No</strong> </div>
+     </div> 
+ </div>
+ <div class='row'>
+     <div class='col'>
+         <img src='contexts/snake-spider_neither.png' style='width:90%;max-width:500px;height:auto;margin-bottom:4%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>Was the landlady's answer accurate given the picture?</p>
+ </div>
+
+` , 
+question_type: 'filler', 
+context_type: 'neither', 
+response_type: 'No', 
+items: 'a spider', 
+scenario: 'landlady', 
+condition: 'true', 
+
+},
+
+
+];
+  
+
+// Set up another trial but substitute the value of the parameter in from the timeline variables.
+var test = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:jsPsych.timelineVariable('stimulus'),
+    choices: ['Accurate', 'Inaccurate'],
+    button_html: '<button class="jspsych-btn" style="font-size:120%;"">%choice%</button>',
+    data: {
+        question_type: jsPsych.timelineVariable('question_type'),
+        context_type: jsPsych.timelineVariable('context_type'),
+        response_type: jsPsych.timelineVariable('response_type'),
+        items: jsPsych.timelineVariable('items')
+    },
+    };
+// 
+var test_procedure = {
+    // Display fixation cross and then a test stimuli
+    timeline: [fixation, test],
+    // link the variables from the stimuli array with the test trial boilerplate
+    timeline_variables: test_stimuli,
+    // Display stimuli at random (with repetition etc!!!) For randomize order use sample 
+    sample: {
+    type: 'alternate-groups',
+    groups: [tests_numbers_1, tests_numbers_2, filler_numbers],  
+    },
+    randomize_order: true,
+    // Repeat 5 times
+    repetitions: 1,
+    };
+
+// Push the  test precedure to timeline
+timeline.push(test_procedure);
+
+var debrief_block = {
+    type: jsPsychHtmlKeyboardResponse,
+    trial_duration: 2500,
+    stimulus: " <p style='font-size:110%;'> This was a demo version of th experiment. Your data will not be collected. You can inspect it at the next slide. </p>"
+    };
+timeline.push(debrief_block);
+
+
+// Run the timeline
+jsPsych.run(timeline);
+    </script>
+</body>
+</html>
