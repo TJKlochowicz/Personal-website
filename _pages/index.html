@@ -99,16 +99,16 @@ layout: header
       <div class="col-2 year-col"><h2 class="year-tag">{{course.date | date:"%Y"}}</h2></div>
       <div class="col-10 course-col">
           {%if course.main%}
-          <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a> in the {{course.program}} (Main instructor: {{course.main}})</p>
+          <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b> in the {{course.program}} (Main instructor: {{course.main}})</p>
           {%else%}
-          <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
+          <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b>  in the {{course.program}} </p>
           {%endif%}
     {% capture previous_course_year %}{{course.date  | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year == previous_course_year %}
           {%if course.main%}
-          <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} (Main instructor: {{course.main}})</p>
+          <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b>  in the {{course.program}} (Main instructor: {{course.main}})</p>
           {%else%}
-          <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
+          <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b>  in the {{course.program}} </p>
           {%endif%}
     {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%elsif current_course_year != previous_course_year%}
@@ -117,9 +117,9 @@ layout: header
         <div class="col-2 year-col"><h2 class="year-tag">{{course.date | date:"%Y"}}</h2></div>
         <div class="col-10 course-col">
             {%if course.main%}
-            <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} (Main instructor: {{course.main}})</p>
+            <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b>  in the {{course.program}} (Main instructor: {{course.main}})</p>
             {%else%}
-            <p class="talks"> {{course.role}} for <a href={{course.url}}>{{course.name}}</a>  in the {{course.program}} </p>
+            <p class="talks"> {{course.role}} for <b><a href={{course.url}}>{{course.name}}</a></b>  in the {{course.program}} </p>
             {%endif%}
         {% capture previous_course_year %}{{course.date | date:"%Y"}}{% endcapture %}
     {%endif%}
