@@ -21,16 +21,13 @@
   description: >
     Poster presentation. The poster is avaliable here: [Poster](https://www.tklochowicz.com/assets/slides/Poster%20nihil.pdf)
 
-- venue: "NihiL Seminar"
+- venue: "NELS 54"
   title: "Free Choice Questions"
-  date: 2023-06-19
-  url: https://projects.illc.uva.nl/nihil/seminar
-  slides: 
+  date: 2024-01-26
+  url: https://nels54.mit.edu/program
+  slides: assets\papers\paper_FCQ.pdf
   description: >
-    **Abstract:** Polar questions like "May I go to the park or to the beach?" seem to give rise to Free Choice-like inferences. The "yes" answer to such question seem to correspond to the permission to freely choose between going to the park and going to the beach. Similarly, the answer "No" seem to correspond to Dual Prohibition, i.e., prohibition to go to either place. 
-
-    We conducted an experiment to empirically test whether these intuitions are true. In the talk I will indicate how the collected data can allow to establish the source of these inferences. Moreover, I will compare the results to the predictions of the current theories of Free Choice extended with question semantics.
-
+    You can see the current draft version of th eFree Choice Questions paper [here](https://www.tklochowicz.com/assets/papers/paper_FCQ.pdf)
 - venue: "PALLMYR-XIII"
   date: 2023-11-18
   title: "Free Choice Questions"
