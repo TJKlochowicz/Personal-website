@@ -302,10 +302,42 @@ condition: 'true',
 
 }];
 
+//Define variables used
+var typingStats = [];
+    var typingDesc = ''
+    var startTime = null;
+    var previousTime = null;
+    var lastKey  =null
+
+window.addEventListener('keydown', function(event) {
+    //If shift is pressed record it only once.  
+        if (event.key !== 'Shift' || lastKey !== 'Shift'){
+           
+        var currentTime = new Date().getTime();
+        lastKey = event.key
+        if (previousTime === null) {
+        previousTime = startTime
+        }
+        const elapsedTime = currentTime - previousTime;
+        const typedChar = event.key;
+        typingStats.push([`${typedChar}`, elapsedTime]);
+        typingDesc += `Typed '${typedChar}' in ${elapsedTime} ms; `;
+    
+        previousTime = currentTime;}});
 
 var test = {
     type: jsPsychSurveyText,
     questions: [{prompt: jsPsych.timelineVariable('stimulus')}],
+
+    on_start: function(test) {
+    typingStats = []
+    typingDesc = ''
+    startTime = new Date().getTime();
+    previousTime = null;
+    var lastKey  =null;},
+
+    on_finish: function(data){console.log(typingDesc); 
+        data.time_stats = typingStats; data.time_desc=typingDesc},
     data: {
         question_type: jsPsych.timelineVariable('question_type'),
         context_type: jsPsych.timelineVariable('context_type'),
