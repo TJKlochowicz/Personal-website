@@ -46,7 +46,7 @@
         var timeline = [];
         var preload = {
             type: jsPsychPreload,
-            images: ['assets/images/contexts/info.png','assets/images/contexts/houses.png','assets/images/contexts/Ben-Eye_neither.png',  'assets/images/contexts/Ben-Eye_one.png',  'assets/images/contexts/Ben-Eye_both.png',  'assets/images/contexts/Palace-Abbey_neither.png',  'assets/images/contexts/Palace-Abbey_one.png',  'assets/images/contexts/Palace-Abbey_both.png',  'assets/images/contexts/Gallery-Museum_neither.png',  'assets/images/contexts/Gallery-Museum_one.png',  'assets/images/contexts/Gallery-Museum_both.png',  'assets/images/contexts/Bridge-Dungeon_neither.png',  'assets/images/contexts/Bridge-Dungeon_one.png',  'assets/images/contexts/Bridge-Dungeon_both.png',  'assets/images/contexts/dog-cat_neither.png',  'assets/images/contexts/dog-cat_one.png',  'assets/images/contexts/dog-cat_both.png',  'assets/images/contexts/lizard-parrot_neither.png',  'assets/images/contexts/lizard-parrot_one.png',  'assets/images/contexts/lizard-parrot_both.png',  'assets/images/contexts/mouse-hamster_neither.png',  'assets/images/contexts/mouse-hamster_one.png',  'assets/images/contexts/mouse-hamster_both.png',  'assets/images/contexts/snake-spider_neither.png',  'assets/images/contexts/snake-spider_one.png',  'assets/images/contexts/snake-spider_both.png'] };
+            images: ['assets/images/contexts/info.png', 'assets/images/contexts/houses.png', 'assets/images/contexts/Ben-Eye_neither.png',  'assets/images/contexts/Ben-Eye_one.png',  'assets/images/contexts/Ben-Eye_both.png', 'assets/images/contexts/dog-cat_neither.png',  'assets/images/contexts/dog-cat_one.png',  'assets/images/contexts/dog-cat_both.png'] };
             timeline.push(preload);
         var welcome = {
             type: jsPsychHtmlButtonResponse,
@@ -176,7 +176,7 @@ var if_node = {
 var loop_node = {
     timeline: [native, if_node],
     loop_function: function(data){
-        // check if the answer is correct: if it is reyurn false not to repeat again, and if not repeat
+        // check if the answer is correct: if it is return false not to repeat again, and if not repeat
         if(data.values()[0].correct){
             return false;
         } else {
@@ -186,55 +186,43 @@ var loop_node = {
     };
 
 // timeline.push(loop_node);
+    
+    
 
 
-
-
+   
 var test_stimuli = [
 { stimulus:` 
- 
- <div class='row'>
-     <div class='col'>
-         <img src='assets/images/contexts/info.png' style='width:80px;height:auto;margin-bottom:2%;margin-top:-5px;'></img>
-     </div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+     <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
+     <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
+
+        <p><i>The picture is all the information that you have about the pass:</i></p>
+    
+ </div> 
+</div>
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/Ben-Eye_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
  </div>
- <div class='row' style='margin-bottom:2%;font-size:110%;'>
-     <div class = 'col' style='text-align:left'>
-         <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
-         <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br>
-            </div>
-            <p><i>The picture is all the information that you have about the pass:</i></p>
-        
-     </div> 
- </div>
- <div class='row'>
-     <div class='col'>
-         <img src='assets/images/contexts/Ben-Eye_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:4%;'></img>
-     </div>
- </div>
- <div>
- </div>
- <div>
- <p style='font-size:110%;'>What is your response?</p>
- </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
 
 ` , 
 question_type: 'test', 
-context_type: 'neither', 
+context_type: 'both', 
 response_type: 'Yes', 
 items: 'Big Ben, the London Eye', 
 scenario: 'tourist office', 
-condition: 'false', 
+condition: 'true', 
 
 }, 
 { stimulus:` 
-
- 
-    <div class='row'>
-     <div class='col'>
-         <img src='assets/images/contexts/info.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
-     </div>
- </div>
  <div class='row' style='margin-bottom:2%;font-size:110%;'>
      <div class = 'col' style='text-align:left'>
          <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
@@ -266,44 +254,37 @@ condition: 'target',
 }, 
 { stimulus:` 
 
- 
-    <div class='row'>
-     <div class='col'>
-         <img src='assets/images/contexts/info.png' style='width:80px;height:auto;margin-bottom:2%;margin-top:-5px;'></img>
-     </div>
- </div>
- <div class='row' style='margin-bottom:2%;font-size:110%;'>
-     <div class = 'col' style='text-align:left'>
-         <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
-         <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br> 
-            </div>
-        <p><i>The picture is all the information that you have about the pass:</i></p>
-        
-     </div> 
- </div>
- <div class='row'>
-     <div class='col'>
-         <img src='assets/images/contexts/Ben-Eye_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
-     </div>
- </div>
- <div>
- </div>
- <div>
- <p style='font-size:110%;'>What is your response?</p>
- </div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+     <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
+     <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
 
-` , 
+        <p><i>The picture is all the information that you have about the pass:</i></p>
+    
+ </div> 
+</div>
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/Ben-Eye_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+`, 
 question_type: 'test', 
-context_type: 'both', 
+context_type: 'neither', 
 response_type: 'Yes', 
 items: 'Big Ben, the London Eye', 
 scenario: 'tourist office', 
-condition: 'true', 
+condition: 'false', 
 
 }];
-
 //Define variables used
-var typingStats = [];
+    var typingStats = [];
     var typingDesc = ''
     var startTime = null;
     var previousTime = null;
@@ -327,7 +308,7 @@ window.addEventListener('keydown', function(event) {
 
 var test = {
     type: jsPsychSurveyText,
-    questions: [{prompt: jsPsych.timelineVariable('stimulus')}],
+    questions: [{prompt: jsPsych.timelineVariable('stimulus'),  required: true}],
 
     on_start: function(test) {
     typingStats = []
