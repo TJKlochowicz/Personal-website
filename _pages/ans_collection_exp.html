@@ -36,6 +36,7 @@
         document.querySelector('head').insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https://www.tklochowicz.com/assets/experiment_css.css" type="text/css">')
         // Initialise and make data display at the end.
         var jsPsych = initJsPsych({
+            //show_progress_bar: true,
             on_finish: function(){
                 // window.location = "https://app.prolific.co/submissions/complete?cc=C1FBD6GN"
                 jsPsych.data.displayData();
@@ -46,7 +47,7 @@
         var timeline = [];
         var preload = {
             type: jsPsychPreload,
-            images: ['assets/images/contexts/info.png', 'assets/images/contexts/houses.png', 'assets/images/contexts/Ben-Eye_neither.png',  'assets/images/contexts/Ben-Eye_one.png',  'assets/images/contexts/Ben-Eye_both.png', 'assets/images/contexts/dog-cat_neither.png',  'assets/images/contexts/dog-cat_one.png',  'assets/images/contexts/dog-cat_both.png'] };
+            images: ['assets/images/contexts/guard.png', 'assets/images/contexts/animals.png', 'assets/images/contexts/Ben-Eye_neither.png',  'assets/images/contexts/Ben-Eye_one.png',  'assets/images/contexts/Ben-Eye_both.png', 'assets/images/contexts/dog-cat_neither.png',  'assets/images/contexts/dog-cat_one.png',  'assets/images/contexts/dog-cat_both.png'] };
             timeline.push(preload);
         var welcome = {
             type: jsPsychHtmlButtonResponse,
@@ -188,20 +189,25 @@ var loop_node = {
 // timeline.push(loop_node);
     
     
-
-
-   
-var test_stimuli = [
-{ stimulus:` 
+var london_mod_variables = [
+{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
 <div class='row' style='margin-bottom:2%;font-size:110%;'>
  <div class = 'col' style='text-align:left'>
      <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
      <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
 
-        <p><i>The picture is all the information that you have about the pass:</i></p>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the information you have about the pass.</p>
     
  </div> 
-</div>
+ 
+</div>`, 
+    
+stimulus:` 
 <div class='row'>
  <div class='col'>
      <img src='assets/images/contexts/Ben-Eye_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
@@ -216,22 +222,30 @@ var test_stimuli = [
 ` , 
 question_type: 'test', 
 context_type: 'both', 
-response_type: 'Yes', 
 items: 'Big Ben, the London Eye', 
 scenario: 'tourist office', 
-condition: 'true', 
+condition: 'Yes', 
+modality: 'modal'
 
 }, 
-{ stimulus:` 
- <div class='row' style='margin-bottom:2%;font-size:110%;'>
-     <div class = 'col' style='text-align:left'>
-         <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
-         <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
+{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+     <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
+     <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
 
-            <p><i>The picture is all the information that you have about the pass:</i></p>
-        
-     </div> 
- </div>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the information you have about the pass.</p>
+    
+ </div> 
+ 
+</div>`, 
+stimulus:` 
+
  <div class='row'>
      <div class='col'>
          <img src='assets/images/contexts/Ben-Eye_one.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
@@ -246,23 +260,30 @@ condition: 'true',
 ` , 
 question_type: 'test', 
 context_type: 'one', 
-response_type: 'Yes', 
 items: 'Big Ben, the London Eye', 
 scenario: 'tourist office', 
 condition: 'target', 
+modality: 'modal'
 
 }, 
-{ stimulus:` 
-
+{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
 <div class='row' style='margin-bottom:2%;font-size:110%;'>
  <div class = 'col' style='text-align:left'>
      <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
      <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
 
-        <p><i>The picture is all the information that you have about the pass:</i></p>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the information you have about the pass.</p>
     
  </div> 
-</div>
+ 
+</div>`,   
+stimulus:` 
+
 <div class='row'>
  <div class='col'>
      <img src='assets/images/contexts/Ben-Eye_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
@@ -277,12 +298,353 @@ condition: 'target',
 `, 
 question_type: 'test', 
 context_type: 'neither', 
-response_type: 'Yes', 
 items: 'Big Ben, the London Eye', 
 scenario: 'tourist office', 
-condition: 'false', 
+condition: 'No', 
+modality: 'modal'
 
 }];
+
+
+london_nom_variables = [{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+    <p style='margin-bottom:15px;'><i>You are looking at a flyer with recommendations about activities in London. Your friend Bill asks you: </i></p>
+    <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Is <strong>Big Ben or the London Eye</strong> in a green circle?</span><br></div>
+    <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the flyer. </p>
+     
+    
+ </div> 
+ 
+</div>`, 
+    
+stimulus:` 
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/Ben-Eye_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'Yes', 
+modality: 'nominal'
+
+}, 
+{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+     <p style='margin-bottom:15px;'><i>You are looking at a flyer with recommendations about activities in London. Your friend Bill asks you: </i></p>
+    <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Is <strong>Big Ben or the London Eye</strong> in a green circle?</span><br></div>
+    <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the flyer. </p>
+ </div> 
+ 
+</div>`, 
+stimulus:` 
+
+ <div class='row'>
+     <div class='col'>
+         <img src='assets/images/contexts/Ben-Eye_one.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+     </div>
+ </div>
+ <div>
+ </div>
+ <div>
+ <p style='font-size:110%;'>What is your response?</p>
+ </div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'target', 
+modality: 'nominal'
+
+}, 
+{ context:`
+    <div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/guard.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+ <div class = 'col' style='text-align:left'>
+    <p style='margin-bottom:15px;'><i>You are looking at a flyer with recommendations about activities in London. Your friend Bill asks you: </i></p>
+    <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Is <strong>Big Ben or the London Eye</strong> in a green circle?</span><br></div>
+    <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the flyer.  </p>
+    
+ </div> 
+ 
+</div>`,   
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/Ben-Eye_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+`, 
+question_type: 'test', 
+context_type: 'neither', 
+items: 'Big Ben, the London Eye', 
+scenario: 'tourist office', 
+condition: 'No', 
+modality: 'nominal'
+
+}]
+
+anim_mod_variables = [{
+context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i>You are a real estate agent. Ann wants to discuss the some terms before drafting a contract.  She asks you:</i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the regulations imposed by the owner of the apartment.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'No', 
+modality: 'modal'
+
+}, 
+
+{context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i>You are a real estate agent. Ann wants to discuss the some terms before drafting a contract.  She asks you:</i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the regulations imposed by the owner of the apartment.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_one.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'target', 
+modality: 'modal'
+
+}, 
+
+{context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i>You are a real estate agent. Ann wants to discuss the some terms before drafting a contract.  She asks you:</i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog or a cat</strong> in this apartment?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the regulations imposed by the owner of the apartment.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'Yes', 
+modality: 'modal'
+
+}, 
+
+]
+
+
+anim_nom_variables = [{
+context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i> You are looking at a leaflet from an animal parade. Your friend Ann asks you </i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann> Is there <strong>a dog or a cat</strong> in a red circle?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the leaflet.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_neither.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'neither', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'No', 
+modality: 'nominal'
+
+}, 
+
+{context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i> You are looking at a leaflet from an animal parade. Your friend Ann asks you </i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann> Is there <strong>a dog or a cat</strong> in a red circle?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the leaflet.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_one.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'one', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'target', 
+modality: 'nominal'
+
+}, 
+
+{context: `<div class='row'>
+    <div class='col'>
+        <img src='assets/images/contexts/animals.png' style='width:120px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+    </div>
+</div>
+<div class='row' style='margin-bottom:2%;font-size:110%;'>
+    <div class = 'col' style='text-align:left'>
+        <p style='margin-bottom:15px;'><i> You are looking at a leaflet from an animal parade. Your friend Ann asks you </i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann> Is there <strong>a dog or a cat</strong> in a red circle?</span><br>
+        <p style='margin-top:10%;text-align:center;'>Press spacebar to see the informationon the leaflet.  </p>
+    </div> 
+</div>
+`,
+stimulus:` 
+
+<div class='row'>
+ <div class='col'>
+     <img src='assets/images/contexts/dog-cat_both.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+ </div>
+</div>
+<div>
+</div>
+<div>
+<p style='font-size:110%;'>What is your response?</p>
+</div>
+
+` , 
+question_type: 'test', 
+context_type: 'both', 
+items: 'a dog, a cat', 
+scenario: 'landlady', 
+condition: 'Yes', 
+modality: 'nominal'
+
+}, 
+
+];
+
+
+
+
+
 //Define variables used
     var typingStats = [];
     var typingDesc = ''
@@ -303,35 +665,55 @@ window.addEventListener('keydown', function(event) {
         const typedChar = event.key;
         typingStats.push([`${typedChar}`, elapsedTime]);
         typingDesc += `Typed '${typedChar}' in ${elapsedTime} ms; `;
+        //console.log(typingDesc)
     
         previousTime = currentTime;}});
+
+var context ={
+    type:  jsPsychHtmlKeyboardResponse,
+    choices: [" "],
+    post_trial_gap: 150,
+    stimulus: jsPsych.timelineVariable('context'),
+    data: {
+        trial_question_type: jsPsych.timelineVariable('question_type'),
+        trial_condition: jsPsych.timelineVariable('condition'),
+        trial_context_type: jsPsych.timelineVariable('context_type'),
+        trial_items: jsPsych.timelineVariable('items'),
+        trial_scenario: jsPsych.timelineVariable('scenario'),
+        trial_modality: jsPsych.timelineVariable('modality')
+    },
+}
 
 var test = {
     type: jsPsychSurveyText,
     questions: [{prompt: jsPsych.timelineVariable('stimulus'),  required: true}],
-
+    post_trial_gap: 400,
     on_start: function(test) {
     typingStats = []
     typingDesc = ''
     startTime = new Date().getTime();
     previousTime = null;
-    var lastKey  =null;},
+    var lastKey  = null;},
 
-    on_finish: function(data){console.log(typingDesc); 
-        data.time_stats = typingStats; data.time_desc=typingDesc},
+    on_finish: function(data){//console.log(typingDesc);
+        data.time_stats = typingStats; data.time_desc=typingDesc; typingStats = []},
     data: {
         question_type: jsPsych.timelineVariable('question_type'),
+        condition: jsPsych.timelineVariable('condition'),
         context_type: jsPsych.timelineVariable('context_type'),
-        response_type: jsPsych.timelineVariable('response_type'),
-        items: jsPsych.timelineVariable('items')
+        items: jsPsych.timelineVariable('items'),
+        scenario: jsPsych.timelineVariable('scenario'),
+        modality: jsPsych.timelineVariable('modality')
     },
     };
 // 
+test_variables =  anim_mod_variables.concat(london_mod_variables, anim_nom_variables, london_nom_variables)
+
 var test_procedure = {
     // Display fixation cross and then a test stimuli
-    timeline: [test],
+    timeline: [context, test],
     // link the variables from the stimuli array with the test trial boilerplate
-    timeline_variables: test_stimuli,
+    timeline_variables: test_variables,
     // Display stimuli at random (with repetition etc!!!) For randomize order use sample 
     // sample: {
     // type: 'alternate-groups',
@@ -353,6 +735,8 @@ var debrief_block = {
     stimulus: " <p style='font-size:110%;'> Thank you for taking part in the experiment! </p>  <p style='font-size:110%;'>You will be redirected to prolific to confirm your participation and completion.</p>"
     };
 timeline.push(debrief_block);
+
+console.log(timeline)
 
 // Run the timeline
 jsPsych.run(timeline);
