@@ -187,7 +187,105 @@ var loop_node = {
     };
 
 // timeline.push(loop_node);
-    
+
+
+// Add instructions and a delay after they appear
+    var instructions = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: `
+                <div class ="row" style="margin-top:0px;">
+                <div class="col"> 
+                 <p style='font-size:110%;'>In this experiment you will play a number of roles in simple scenarios.</p>
+                 <p style='font-size:110%;'> In each story you will be asked a question by one of the characters. You will have to answer this question based on a picture. For example: </p>
+                </div></div>
+                <div class="row" style="margin:5%">
+                    <div class="col-sm-6">
+                        <img src='assets/images/contexts/dog-cat_one.png' style="width:60%;margin-bottom:4%;"></img>
+                        <p class='small'>It is <strong>allowed</strong> to keep a dog, but it is <strong>not allowed</strong> to keep a cat.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src='assets/images/contexts/dog-cat_neither.png' style="width:60%;margin-bottom:4%;"></img>
+                        <p class='small'>It is <strong>not allowed</strong> to keep a dog, and it is <strong>not allowed</strong> to keep a cat.</p>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col"> 
+                 <p style='font-size:110%;'> If a symbol is in a <strong><span style="color:red;">red</span></strong> crossed out circle, then the action which it represents is <strong><span style="color:red;">not allowed.</span></strong> </p>
+                 <p style='font-size:110%;'> If it is in a <strong><span style="color:green;">green</span></strong>  (not crossed out) circle, then the action is <strong><span style="color:green;">allowed</span></strong>. </p>
+                </div> </div>
+
+            `,
+            choices: ['OK'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400
+            };
+
+        // Push the instructions trial to the timeline
+        timeline.push(instructions);
+   
+        // Add instructions and a second of delay after they appear
+        var instructions_2 = {
+            type:  jsPsychHtmlKeyboardResponse,
+        choices: [" "],
+        post_trial_gap: 150,
+            stimulus: ` 
+                    <div class='row'>
+                        <div class='col'>
+                             <p style='font-size:110%;'>Example:</p>
+                            <img src='assets/images/contexts/animals.png' style='width:80px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                        </div>
+                    </div>
+                    <div class='row' style='margin-bottom:4%;'>
+                        <div class='col' style='text-align:left'>
+                            <p style='margin-bottom:15px;'><i>You are a real estate agent. Ann wants to discuss the some terms before drafting a contract.  She asks you:</i></p>
+        <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Ann: </span><span class= white-space-ann>Am I allowed to keep <strong>a dog</strong> in this apartment?</span><br>
+            <p style='margin-top:10%;text-align:center;'>Press spacebar to see the regulations imposed by the owner of the apartment.  </p>
+                        </div> 
+                    </div></div>
+                
+
+                    `,
+            
+            };
+
+        // Push the instructions trial to the timeline
+        timeline.push(instructions_2);
+
+var instructions_3 = {type: jsPsychSurveyText,
+    questions: [{prompt:` <div class='row'>
+     <div class='col'>
+         <img src='assets/images/contexts/dog-cat_one.png' style='width:80%;max-width:500px;height:auto;margin-bottom:2%;'></img>
+     </div>
+ </div>
+                <div class='row style='margin-bottom:4%;'>
+                    <div class='col'>
+                         <p style='font-size:110%;'>In this case, you can answer simply <b>"Yes"</b>, because Ann is allowed to keep a dog.</p>
+                    </div>
+                </div> `,  
+    required: true}],
+    post_trial_gap: 400,};
+
+    timeline.push(instructions_3);
+
+
+    var instructions_4 = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: `
+                <div class ="row" style="margin-top:0px;">
+                <div class="col"> 
+                 <p style='font-size:110%;'>You can keep your answers short as long as they answer the questions truthfully.</p>
+                 <p style='font-size:110%;'> If there is a question which you cannot answer given the picture write '-' and proceed to the next question. </p>
+                </div></div>
+
+            `,
+            choices: ['OK'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400
+            };
+  
+            
+            timeline.push(instructions_4);
+
     
 var london_mod_variables = [
 { context:`
@@ -199,7 +297,7 @@ var london_mod_variables = [
 <div class='row' style='margin-bottom:2%;font-size:110%;'>
  <div class = 'col' style='text-align:left'>
      <p style='margin-bottom:15px;'><i>You are working at a tourist office in London. Bill wants to know more about the tourist pass your company offers He asks you:</i></p>
-     <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to either either <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
+     <div style='margin-left:40px;margin-bottom:15px;'>    <span style='font-variant:small-caps;'>Bill: </span>Am I allowed to go to either <strong>Big Ben or the London Eye</strong> with this pass?</span><br></div>
 
         <p style='margin-top:10%;text-align:center;'>Press spacebar to see the information you have about the pass.</p>
     
