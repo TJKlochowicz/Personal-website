@@ -68,10 +68,20 @@ layout: header
     <i class="fa-solid fa-chevron-right arrow"></i>  </a></p>
    
     <div class="collapse" id={{talk.venue}}>
-      {%if talk.slides%}
-      <p> <a href={{talk.slides}}>Slides</a></p>
+      {%if talk.slides and talk.abstract%}
+      <p><b> <a href={{talk.slides}}>Slides</a> <a href={{talk.abstract}}>| Abstract</a></b></p>
       {%endif%}
-      <p>{{talk.description | markdownify}}</p>
+      {%if talk.abstract and talk.slides == nil%}
+      <p><b><a href={{talk.abstract}}>| Abstract</a></b></p>
+      {%endif%}
+      {%if talk.slides and talk.abstract == nil%}
+      <p><b> <a href={{talk.slides}}>Slides</a></b></p>
+      {%endif%}
+      <p>{{talk.description | markdownify}} 
+        {%if talk.url%}
+        <a href={{talk.url}}>See more.</a>
+        {%endif%}
+      </p>
     </div>
     {%if talk.date != all_talks[-1].date%}
     <!-- <hr class="talk-hr"> -->

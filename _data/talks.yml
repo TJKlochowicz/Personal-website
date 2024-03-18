@@ -25,7 +25,7 @@
   title: "Free Choice Questions"
   date: 2024-01-26
   url: https://nels54.mit.edu/program
-  slides: assets\papers\paper_FCQ.pdf
+  abstract: assets\papers\paper_FCQ.pdf
   description: >
     You can see the current draft version of th eFree Choice Questions paper [here](https://www.tklochowicz.com/assets/papers/paper_FCQ.pdf)
     
@@ -37,3 +37,27 @@
   description: >
      **Abstract**: Polar questions like 'May I go to the park or to the beach?' give rise to inferences similar to Free Choice Permission. The *Yes* answer to these questions corresponds to the permission to freely choose between going to the park and going to the beach. *No* corresponds to Dual Prohibition, i.e., prohibition to go to either place. I empirically tested these intuitions. I will indicate how the collected data can allow us to establish the source of these inferences and compare the findings to predictions made by current theories of Free Choice extended with question semantics. The collected data poses a challenge to the semantic and scalar approaches to *free choice* and supports non-scalar pragmatics as a uniform solution to the *free choice* puzzle.
 
+- venue: "SALT 34"
+  date: 2024-05-29
+  title: "New Experimental Evidence against the Similarity Approach to Conditionals (with Dean McHugh)"
+  url: https://saltconf.github.io/salt34/call-for-abstracts/
+  abstract: assets\papers\SALT_2024_Rec.pdf
+  slides: assets\slides\PallmyrTKlochowicz.pdf
+  description: >
+     **Abstract**: he similarity approach to conditionals (Stalnaker 1968, Lewis 1973) predicts Reciprocity to be valid: whenever 𝐴 > 𝐵, 𝐵 > 𝐴 and 𝐴 > 𝐶 are true, 𝐵 > 𝐶 is true (where 𝐴 > 𝐵 denotes if 𝐴 would 𝐵). We ran an experiment to test the validity of this rule. Strikingly,
+      half of our participants judged the rule invalid, i.e. judged in at least one scenario that it does not preserve truth. Our data also challenge Kratzer’s (2012) and Fine’s (2012) semantics of
+      conditionals, but we show that McHugh’s (2022) aboutness approach can account for our data.
+
+
+- venue: "TLLM IV"
+  date: 2024-03-30
+  title: "How to Split a Relation (with Aleksi Anttila, Marco Degano and Søren Knudstorp)"
+  url: https://tsinghualogic.net/JRC/tllm/2024connectives/
+  #abstract: assets\papers\SALT_2024_Rec.pdf
+  #slides: assets\slides\PallmyrTKlochowicz.pdf
+  description: >
+    To address the issue of BSML with Wide Scope Obligation, we propose that this splitting not only affects the state of evluation, but
+    also the accessibility relation. Splitting represents a tendency to entertain different alternatives (possibilities) separately. 
+    These alternatives can be ‘actual’, when the state is split, but they can also be modal, when the relation is split. 
+    The resulting logics preserves all the important Free CHoice inferences from BSML, without falling into the problem of Wide Scope Obligation.
+    We will also propose an alternative solution, which treats states of evaluation as sets of paths, and not sets of worlds.   
