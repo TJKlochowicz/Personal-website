@@ -42,7 +42,7 @@
   title: "New Experimental Evidence against the Similarity Approach to Conditionals (with Dean McHugh)"
   url: https://saltconf.github.io/salt34/call-for-abstracts/
   abstract: assets\papers\SALT_2024_Rec.pdf
-  slides: assets\slides\PallmyrTKlochowicz.pdf
+  #slides: assets\slides\PallmyrTKlochowicz.pdf
   description: >
       The similarity approach to conditionals (Stalnaker 1968, Lewis 1973) predicts Reciprocity to be valid: whenever 𝐴 > 𝐵, 𝐵 > 𝐴 and 𝐴 > 𝐶 are true, 𝐵 > 𝐶 is true (where 𝐴 > 𝐵 denotes if 𝐴 would 𝐵). We ran an experiment to test the validity of this rule. Strikingly,
       half of our participants judged the rule invalid, i.e. judged in at least one scenario that it does not preserve truth. Our data also challenge Kratzer’s (2012) and Fine’s (2012) semantics of
