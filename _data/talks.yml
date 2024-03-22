@@ -27,7 +27,7 @@
   url: https://nels54.mit.edu/program
   abstract: assets\papers\paper_FCQ.pdf
   description: >
-    You can see the current draft version of th eFree Choice Questions paper [here](https://www.tklochowicz.com/assets/papers/paper_FCQ.pdf)
+    You can see the current draft version of the Free Choice Questions paper [here](https://www.tklochowicz.com/assets/papers/paper_FCQ.pdf)
     
 - venue: "PALLMYR-XIII"
   date: 2023-11-18
@@ -44,7 +44,7 @@
   abstract: assets\papers\SALT_2024_Rec.pdf
   slides: assets\slides\PallmyrTKlochowicz.pdf
   description: >
-     **Abstract**: he similarity approach to conditionals (Stalnaker 1968, Lewis 1973) predicts Reciprocity to be valid: whenever 𝐴 > 𝐵, 𝐵 > 𝐴 and 𝐴 > 𝐶 are true, 𝐵 > 𝐶 is true (where 𝐴 > 𝐵 denotes if 𝐴 would 𝐵). We ran an experiment to test the validity of this rule. Strikingly,
+      The similarity approach to conditionals (Stalnaker 1968, Lewis 1973) predicts Reciprocity to be valid: whenever 𝐴 > 𝐵, 𝐵 > 𝐴 and 𝐴 > 𝐶 are true, 𝐵 > 𝐶 is true (where 𝐴 > 𝐵 denotes if 𝐴 would 𝐵). We ran an experiment to test the validity of this rule. Strikingly,
       half of our participants judged the rule invalid, i.e. judged in at least one scenario that it does not preserve truth. Our data also challenge Kratzer’s (2012) and Fine’s (2012) semantics of
       conditionals, but we show that McHugh’s (2022) aboutness approach can account for our data.
 
@@ -59,5 +59,5 @@
     To address the issue of BSML with Wide Scope Obligation, we propose that this splitting not only affects the state of evluation, but
     also the accessibility relation. Splitting represents a tendency to entertain different alternatives (possibilities) separately. 
     These alternatives can be ‘actual’, when the state is split, but they can also be modal, when the relation is split. 
-    The resulting logics preserves all the important Free CHoice inferences from BSML, without falling into the problem of Wide Scope Obligation.
+    The resulting logics preserves all the important Free Choice inferences from BSML, without falling into the problem of Wide Scope Obligation.
     We will also propose an alternative solution, which treats states of evaluation as sets of paths, and not sets of worlds.   
