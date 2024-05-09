@@ -62,7 +62,7 @@ var instructions = {
                     </div>
                         <div class='row' style='margin-bottom:4%;'>
                         <div class='col' style='text-align:left; margin-left:30%;'>
-                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Were all circles blue?</span>  <br>
+                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Are all circles blue?</span>  <br>
                             <span style='font-variant:small-caps;'>Bill: </span><strong>Yes</strong> </div>
                             
                         </div>
@@ -88,7 +88,7 @@ var instructions = {
             };
 
 
-timeline.push(instructions, instructions_1 )
+timeline.push(instructions)
 
 var red_square = {
   type: jsPsychImageKeyboardResponse,
@@ -114,13 +114,26 @@ var blue_square = {
   choices: ['NO_KEYS'],
 };
 
+var q = {type: jsPsychHtmlButtonResponse,
+            stimulus: ` 
+                        <div class='row' style='margin-bottom:10%;'>
+                        <div class='col' style='text-align:left'>
+                             <div style='margin-left:40px;font-size:140%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Are some squares red?</span>  <br>                          
+                        </div>
+                    </div>
 
-var q1 = {
-            type: jsPsychHtmlButtonResponse,
+                    `,
+            choices: ['SHOW PICTURES'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400,
+            
+
+}
+var a = {   type: jsPsychHtmlButtonResponse,
             stimulus: ` 
                         <div class='row' style='margin-bottom:4%;'>
                         <div class='col' style='text-align:left'>
-                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Were some squares red?</span>  <br>
+                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Are some squares red?</span>  <br>
                             <span style='font-variant:small-caps;'>Bill: </span><strong>Yes</strong> </div>
                             
                         </div>
@@ -135,7 +148,7 @@ var q1 = {
             };
 
 
-timeline.push(red_square, blue_circ, red_square, blue_square, q1, red_square, blue_circ, red_square, red_square, q1)
+timeline.push(q,instructions_1, red_square, blue_circ, red_square, blue_square, a, q, red_square, blue_circ, red_square, red_square, a)
 
 
 
