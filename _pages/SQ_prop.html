@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add JsPsych -->
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <!-- Keybord response plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <!-- Image Keybord response plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.2"></script>
+    <!-- Preload plugin to preload images -->
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+    <!-- Button Response Plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.2"></script>
+     <!-- Image button response plugin -->
+     <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.2"></script>
+    
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
+
+
+
+    <!-- Style from JsPsych -->
+    <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!-- JsPsych script -->
+    <script>
+ // Note that participant's response 0 corresponds to Yes and 1 corresponds to No. 
+        // Bootstrap
+        document.querySelector('head').insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">')
+        document.querySelector('head').insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https://www.tklochowicz.com/assets/experiment_css.css" type="text/css">')
+        // Initialise and make data display at the end.
+       
+     var jsPsych = initJsPsych({
+            on_finish: function(){
+                // window.location = ""
+                jsPsych.data.displayData();
+            }
+            });
+
+var timeline = [];
+
+var instructions = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: ` 
+                    <div class='row' style='margin-bottom:4%;'>
+                        <div class='col'>
+                             <p style='font-size:110%;'> You will see a series of colored shapes. Afterwards a conversation will appear. Your task will be to judge whether the response of the second speaker was accurate given the pictures.</p>
+                             <p style='font-size:110%;'> <b> Example: </b> </p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                             <img src='assets/images/sq/blue_circ.png' style='width:100px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                             <img src='assets/images/sq/blue_circ.png' style='width:100px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                             <img src='assets/images/sq/blue_circ.png' style='width:100px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                             <img src='assets/images/sq/blue_circ.png' style='width:100px;height:auto;margin-bottom:4%;margin-top:-5px;'></img>
+                        </div>
+                    </div>
+                        <div class='row' style='margin-bottom:4%;'>
+                        <div class='col' style='text-align:left; margin-left:30%;'>
+                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Were all circles blue?</span>  <br>
+                            <span style='font-variant:small-caps;'>Bill: </span><strong>Yes</strong> </div>
+                            
+                        </div>
+                    </div>
+
+                    <p style='font-size:110%;'> <b> Was Bill's answer accurate? </b> </p>
+                    `,
+            choices: ['YES'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400,
+            
+            };
+
+        var instructions_1 = {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: ` 
+                    <p style='font-size:110%;'> The picture will appear on the screen one by one. Get Ready! </p>
+                    `,
+            choices: ['NO_KEYS'],
+            post_trial_gap: 600,
+            trial_duration: 2500,
+            
+            };
+
+
+timeline.push(instructions, instructions_1 )
+
+var red_square = {
+  type: jsPsychImageKeyboardResponse,
+  trial_duration: 1000,
+  post_trial_gap: 200,
+  stimulus: 'assets/images/sq/red_square.jpg',
+  choices: ['NO_KEYS'],
+};
+
+var blue_circ = {
+  type: jsPsychImageKeyboardResponse,
+  trial_duration: 1000,
+  post_trial_gap: 200,
+  stimulus: 'assets/images/sq/blue_circ.png',
+  choices: ['NO_KEYS'],
+};
+
+var blue_square = {
+  type: jsPsychImageKeyboardResponse,
+  trial_duration: 1000,
+  post_trial_gap: 200,
+  stimulus: 'assets/images/sq/blue_square.jpg',
+  choices: ['NO_KEYS'],
+};
+
+
+var q1 = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: ` 
+                        <div class='row' style='margin-bottom:4%;'>
+                        <div class='col' style='text-align:left'>
+                             <div style='margin-left:40px;font-size:110%;'>    <span style='font-variant:small-caps;'>Ann: </span><span class='white-space-ann'>Were some squares red?</span>  <br>
+                            <span style='font-variant:small-caps;'>Bill: </span><strong>Yes</strong> </div>
+                            
+                        </div>
+                    </div>
+
+                    <p style='font-size:110%;'> <b> Was Bill's answer accurate? </b> </p>
+                    `,
+            choices: ['YES', 'NO'],
+            button_html: '<button class="jspsych-btn" style="font-size:120%;margin-bottom:40px;">%choice%</button>',
+            post_trial_gap: 400,
+            
+            };
+
+
+timeline.push(red_square, blue_circ, red_square, blue_square, q1, red_square, blue_circ, red_square, red_square, q1)
+
+
+
+
+// Run the timeline
+jsPsych.run(timeline);
+    </script>
+</body>
+</html>
