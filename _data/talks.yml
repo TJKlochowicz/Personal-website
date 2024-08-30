@@ -61,3 +61,16 @@
     These alternatives can be ‘actual’, when the state is split, but they can also be modal, when the relation is split. 
     The resulting logics preserves all the important Free Choice inferences from BSML, without falling into the problem of Wide Scope Obligation.
     We will also propose an alternative solution, which treats states of evaluation as sets of paths, and not sets of worlds.   
+
+- venue: "MECORE closing workshop"
+  date: 2024-03-30
+  title: "Computational tools for the MECORE database)"
+  url: https://wuegaki.ppls.ed.ac.uk/mecore/mecore-final-workshop/
+  #abstract: assets\papers\SALT_2024_Rec.pdf
+  slides: assets\slides\klochowicz-computational.pdf
+  description: >
+      The MECORE project by Uegaki et al. (2022) provides a cross-linguistic database of clause-
+      embedding predicates, which provides empirical confirmation or falsification to the hypotheses
+      postulated in the literature. I present a Python package which allows for the analysis of the
+      collected data, verification of the existing hypotheses about the selectional behaviour of those
+      predicates, and discovery of novel hypotheses using Machine Learning.
