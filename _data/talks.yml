@@ -64,7 +64,7 @@
 
 - venue: "MECORE closing workshop"
   date: 2024-03-30
-  title: "Computational tools for the MECORE database)"
+  title: "Computational tools for the MECORE database"
   url: https://wuegaki.ppls.ed.ac.uk/mecore/mecore-final-workshop/
   #abstract: assets\papers\SALT_2024_Rec.pdf
   slides: assets\slides\klochowicz-computational.pdf
@@ -74,3 +74,16 @@
       postulated in the literature. I present a Python package which allows for the analysis of the
       collected data, verification of the existing hypotheses about the selectional behaviour of those
       predicates, and discovery of novel hypotheses using Machine Learning.
+
+- venue: "Sinn und Bedeutung 29; TMT Workshop"
+  date: 2024-09-20
+  title: "Neglect-Zero effects in the interpretation of quantifiers and disjunction (with Oliver Bott, Fabian Schlotterbeck, Sonia Ramotowska and Maria Aloni)"
+  url: https://sub29.unime.it/
+  #abstract: assets\papers\SALT_2024_Rec.pdf
+  slides: assets\slides\sub_28_Neglect_Zero_Effects.pdf
+  description: >
+      Several inferences in natural language deviate from classical logic, among them upper-
+      bound inferences normally analysed as scalar implicatures, distributive infer-
+      ences of disjunction but also certain empty-set effects in the interpretation of (mostly)
+      downward-entailing quantifiers such as *less than*. We present a direct empirical comparison sug-
+      gesting that diverse tools are needed to capture the processing of these inferences.
