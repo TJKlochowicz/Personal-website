@@ -54,7 +54,7 @@
   title: "How to Split a Relation (with Aleksi Anttila, Marco Degano and Søren Knudstorp)"
   url: https://tsinghualogic.net/JRC/tllm/2024connectives/
   #abstract: assets\papers\SALT_2024_Rec.pdf
-  #slides: assets\slides\PallmyrTKlochowicz.pdf
+  slides: assets\slides\how_to_split.pdf
   description: >
     To address the issue of BSML with Wide Scope Obligation, we propose that this splitting not only affects the state of evluation, but
     also the accessibility relation. Splitting represents a tendency to entertain different alternatives (possibilities) separately. 
@@ -87,3 +87,14 @@
       ences of disjunction but also certain empty-set effects in the interpretation of (mostly)
       downward-entailing quantifiers such as *less than*. We present a direct empirical comparison sug-
       gesting that diverse tools are needed to capture the processing of these inferences.
+
+- venue: "University of Padua"
+  data: 2024-10-21
+  title: "New Experimental Evidence against the Similarity Approach to Conditionals (with Dean McHugh)"
+  #url: https://sub29.unime.it/
+  #abstract: assets\papers\SALT_2024_Rec.pdf
+  slides: assets\slides\Padua_Slides_October_2024.pdf
+  description: >
+      The similarity approach to conditionals (Stalnaker 1968, Lewis 1973) predicts Reciprocity to be valid: whenever 𝐴 > 𝐵, 𝐵 > 𝐴 and 𝐴 > 𝐶 are true, 𝐵 > 𝐶 is true (where 𝐴 > 𝐵 denotes if 𝐴 would 𝐵). We ran an experiment to test the validity of this rule. Strikingly,
+      half of our participants judged the rule invalid, i.e. judged in at least one scenario that it does not preserve truth. Our data also challenge Kratzer’s (2012) and Fine’s (2012) semantics of
+      conditionals, but we show that McHugh’s (2022) aboutness approach can account for our data.
