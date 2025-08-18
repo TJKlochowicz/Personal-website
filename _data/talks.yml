@@ -111,3 +111,12 @@
      However, examples provided by Magri (2011) and Hurford disjunctions of scalar terms in question still behave as if the implicatures were computed. 
      Moreover, questions with scalar terms are sensitive to context and prior beliefs of the speaker. 
      I propose to generalise the exhaustification operator to work on questions and derive implicatures in questions as a negative biased to the questions in the alternative set.
+     
+- venue: "COGSCI 2025"
+  date: 2025-08-02
+  title: "Neglect zero: evidence from priming across constructions"
+  url: https://escholarship.org/uc/item/36w6x7z9
+  abstract: https://escholarship.org/uc/item/36w6x7z9
+  # slides: assets\slides\sub_28_Neglect_Zero_Effects.pdf
+  description: >
+      Recent studies use semantic structural priming to show that various cases of linguistic strengthening happen through a common mechanism: generation of implicatures through alternative-based (scalar) reasoning. In this paper, we used priming to investigate another group of cases, where strengthening is postulated to follow from the tendency to systematically neglect structures that verify a sentence by virtue of an empty configuration (neglect-zero): empty-set quantifiers ('at most/fewer than') and disjunction under a universal quantifier. We report data indicating semantic priming between these two structures, but not between them and scalar 'some'. We propose that 1. there is a common mechanism in use for strengthening constructions postulated to follow from the neglect-zero tendency, and that 2. this mechanism is different from the one involved in alternative-based reasoning.
