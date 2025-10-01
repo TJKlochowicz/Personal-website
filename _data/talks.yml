@@ -137,8 +137,7 @@
   # abstract: https://escholarship.org/uc/item/36w6x7z9
   slides: assets\slides\Klochowicz_Belief_revision_in_BSML.pdf
   description: >
-      I propose a formal framework for belief revision using team semantics wich postulates that in belief ascriptions we systematicall neglect beliefs that are supported by an empty withess-set of possible worlds in our information state. I show that this framework can account for most inferences that hyperintensional frameworks are designed to explain and some additional inferences like possibility implicatuons of disjunctive beliefs, which topic- or aboutness-based may have troubles accounting for. 
-
+       In this talk, I propose a formal framework for belief revision using team semantics, which postulates that in belief ascriptions we systematically neglect beliefs that are supported by an empty witness-set of possible worlds in our information state. I show that this framework can account for most inferences that hyperintensional frameworks are designed to explain and some additional inferences like possibility implicatuons of disjunctive beliefs, which topic- or aboutness-based frameworks may have trouble accounting for.
 
 - venue: "Sinn und Bedeutung 30"
   date: 2025-09-24
