@@ -9,7 +9,7 @@
 - name: Logic and Conversation
   date: 2023-11-11
   sem: (November-December)
-  role: Teaching Assistant
+  role: Teaching Assistant & Co-Lecturer
   program: Master of Logic
   main: Floris Roelofsen
   url: https://projects.illc.uva.nl/inquisitivesemantics/
@@ -33,7 +33,15 @@
 - name: Logic and Conversation
   date: 2024-10-28
   sem: (November-December)
-  role: Teaching Assistant
+  role: Teaching Assistant & Co-Lecturer
+  program: Master of Logic
+  main: Floris Roelofsen
+  url: https://projects.illc.uva.nl/inquisitivesemantics/
+
+- name: Logic and Conversation
+  date: 2025-10-28
+  sem: (November-December)
+  role: Guest Lecturer
   program: Master of Logic
   main: Floris Roelofsen
   url: https://projects.illc.uva.nl/inquisitivesemantics/
@@ -41,7 +49,7 @@
 - name: Structures for Semantics
   date: 2025-04-10
   sem: (April-May)
-  role: Teaching Assistant
+  role: Teaching Assistant & Co-Lecturer
   program: Master of Logic
   main: Maria Aloni
   url: https://studiegids.uva.nl/xmlpages/page/2024-2025-en/search-course/course/114774
