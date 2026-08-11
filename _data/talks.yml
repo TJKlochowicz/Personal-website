@@ -157,3 +157,20 @@
   description: >
     Adults usually interpret disjunction exclusively. Preschool children instead sometimes interpret disjunctions as conjunctions. Conjunctive readings persist under other operators, such as modalities and quantifiers. We propose to explain this behaviour by two independently motivated cognitive biases: 1. Neglect-zero (Aloni 2022) 2. No-split (Sbardolini 2025). We argue that children have more issues suspending the biases than adults. We claim that the conjunctive readings are independent of the ability to engage with alternative-based structures and hence do not constitute evidence against Chierchia’s claim that the ability to exhaustify is acquired late. Our theory predicts conjunctive interpretations to be simpler and to occur earlier than inclusive ones. This prediction is orthogonal to the exhaustifcation-based theories, which are committed to the claims that children compute recursive exhaustification and have access to the inclusive reading (parse) prior to the conjunctive one.
       
+- venue: "Sinn und Bedeutung 31"
+  date: 2026-09-02
+  title: "Counterfactuals in Bilateral State-Based Logic of Neglect Zero."
+  url: https://sites.google.com/view/sub31nantes/program 
+  # abstract: https://escholarship.org/uc/item/36w6x7z9
+  # slides: assets\slides\Klochowicz-Sbardolini-Aloni_talk.pdf
+  description: >
+    According to Aloni (2022), speakers tend to neglect structures that verify a sentence by virtue of an empty-witness set (neglect zero). Aloni uses the bilateral and state-based semantics to model neglect zero and natural language inferences involving disjunction. We extend this approach with semantics of counterfactuals like ‘if A would B to account for Simplification of Disjunctive Antecedents. The extended framework can capture SDA and Negation Commutativity without satisfying Antecedent Strengthening or Conditional Excluded Middle (cf., Santorio (2018); Mandelkern (2018)).
+      
+- venue: "SALT 36"
+  date: 2026-07-31
+  title: "Counterfactuals: Breaking Substitution by Changing the Topic. (Joint with Dean McHugh and Ivano Ciardelli)"
+  url: https://saltconf.github.io/salt36/
+  # abstract: https://escholarship.org/uc/item/36w6x7z9
+  # slides: assets\slides\Klochowicz-Sbardolini-Aloni_talk.pdf
+  description: >
+    Substitution is the principle that counterfactuals with logically equivalent antecedents are themselves equivalent. It is a widely-validated principle in counterfactual logic, and a consequence of the truth-conditional conception of meaning. We tested the validity of Substitution using a novel experimental design. Our results show that Substitution is invalid. Moreover, they point towards a missing ingredient in theories of counterfactuals: aboutness.
